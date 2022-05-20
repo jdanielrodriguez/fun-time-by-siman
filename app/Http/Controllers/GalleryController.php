@@ -12,19 +12,43 @@ class GalleryController extends Controller
     public function index(Request $request)
     {
 
-       return"Hola Controlador";
+
+
+
 
         if (!$request->ajax()) return redirect('/');
-       // $galeria = new Galeria();
+        // $galeria = new Galeria();
 
-        $galeria = Galeria::select('id','image')
-        ->orderBy('id', 'desc')->get();
+
+        $galeria = Galeria::where('estado', '=', '1')
+            ->select('id', 'image')
+            ->orderBy('id', 'desc')->get();
 
         return ['galeria' => $galeria];
+    }
+
+
+    public function video(Request $request)
+    {
 
 
 
 
+
+         if (!$request->ajax()) return redirect('/');
+
+
+        $id = $request->galeria;
+
+
+
+
+        $video = Galeria::where('id', '=', $id)
+            ->select('video', 'id')->get(1);
+
+        //return $video[0]->video;
+
+        return ['video' => $video];
     }
 
 
@@ -133,12 +157,5 @@ class GalleryController extends Controller
 
         if (!$request->ajax()) return redirect('/');
         $galeria = new Galeria();
-
-
-
-
     }
-
-
-
 }

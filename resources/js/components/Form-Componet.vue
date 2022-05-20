@@ -144,7 +144,7 @@
                             @change="getImage"
                             data-sb-validations="required"
                         />
-                        <label for="participante">Imagen</label>
+                        <label for="participante">Imagen Max 2mb</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -164,7 +164,7 @@
                             @change="getVideo(event)"
                             data-sb-validations="required"
                         />
-                        <label for="video">Video</label>
+                        <label for="video">Video Max 5mb</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -172,14 +172,16 @@
                             El video requerida.
                         </div>
                     </div>
-
-                    <video
+                 <div v-show="mostrar">
+                   <video
                         autoplay
                         id="video-preview"
                         style="width: 100%"
                         controls
                         v-show="file != ''"
                     />
+                 </div>
+
 
                     <!-- Submit success message-->
                     <!---->
@@ -247,6 +249,7 @@ export default {
             grupo: [""],
             img: null,
             video: null,
+            mostrar: 0,
 
             errorMostrarMsjgaleria: [],
             mensaje: "",
@@ -262,6 +265,14 @@ export default {
             if (this.validar()) {
                 return;
             }
+
+            Swal.fire({
+              title: "Checking...",
+              text: "Please wait",
+              imageUrl: "img/loading.gif",
+              showConfirmButton: false,
+              allowOutsideClick: false
+            });
 
 
             let me = this;
@@ -285,6 +296,7 @@ export default {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    me.mostrar=0;
                     window.location.reload();
                 })
                 .catch(function (error) {
@@ -318,7 +330,7 @@ export default {
 
         getVideo() {
 
-
+             this.mostrar=1;
             let input = document.getElementById("video");
             let video = input.files[0];
             this.video = video;

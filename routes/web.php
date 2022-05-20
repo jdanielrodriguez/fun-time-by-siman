@@ -36,3 +36,4 @@ Route::post('/galeria/registro', [App\Http\Controllers\GalleryController::class,
 /**** Galeria */
 Route::get('/gallery/list', [App\Http\Controllers\GalleryController::class, 'index']);
 /**** Video */
+Route::get('/gallery/video', [App\Http\Controllers\GalleryController::class, 'video']);
