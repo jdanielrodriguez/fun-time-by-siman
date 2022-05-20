@@ -18,11 +18,20 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/instrucciones', function () {
+    return view('info');
+});
+
 Route::get('/registro', function () {
     return view('registro');
 });
 
+Route::get('/galeria', function () {
+    return view('galeria');
+});
+
+
+/**** Registro */
+Route::post('/galeria/registro', [App\Http\Controllers\GalleryController::class, 'store']);
+/**** Galeria */
 Route::get('/gallery/list', [App\Http\Controllers\GalleryController::class, 'index']);
-Route::post('/gallery/add', [App\Http\Controllers\GalleryController::class, 'store']);
-
-

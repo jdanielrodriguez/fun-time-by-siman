@@ -11,7 +11,7 @@ class Gallery extends Model
     protected $table = 'gallery';
     public $timestamps = false;
 
-    protected $fillable = ['fechahora','nombre','dpi','correo','telefono','participante','img','video','estado'];
+    protected $fillable = ['fechahora','nombre','dpi','correo','telefono','participante','fechanacimiento','img','video','estado'];
 
 
 }

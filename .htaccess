@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^funtimesiman.com$ [NC,OR] RewriteCond %{HTTP_HOST} ^www.funtimesiman.com$
+RewriteCond %{REQUEST_URI} !carpeta/
+RewriteRule (.*) /public/$1 [L]

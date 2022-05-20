@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\Gallery;
+use App\Models\Galeria;
 use Illuminate\Support\Facades\DB;
 
 class GalleryController extends Controller
@@ -15,9 +15,6 @@ class GalleryController extends Controller
 
 
         if (!$request->ajax()) return redirect('/');
-
-
-
     }
 
 
@@ -25,34 +22,95 @@ class GalleryController extends Controller
     {
 
 
+
         if (!$request->ajax()) return redirect('/');
+
+
 
         $mytime = Carbon::now('America/Guatemala');
 
-        $mytime = $mytime->format('y-m-d h:i:s');
+        $time = $mytime->format('y-m-d h:i:s');
+
+        $hora = $mytime->format('his');
+
+
+
 
 
         /*** image */
-       /*** video */
 
-        $galeria = new Gallery();
+        $generarnombre = $request->participante;
 
-        $galeria->fecha_hora = $mytime;
+        if ($request->img == "null" || $request->img == "") {
+        } else {
+
+
+            $exploded = explode(',', $request->img);
+            $decoded = base64_decode($exploded[1]);
+
+            if (str_contains($exploded[0], 'jpeg')) {
+                $extension = 'jpeg';
+            } else if (str_contains($exploded[0], 'jpg')) {
+                $extension = 'jpg';
+            } else {
+                $extension = 'png';
+            }
+
+            $fileName = $generarnombre . $hora . '.' . $extension;
+            $path = public_path() . '/img/' . $fileName;
+
+
+            file_put_contents($path, $decoded);
+        }
+
+        /*** video */
+
+
+        if ($request->video == "null" || $request->video == "") {
+        } else {
+
+            // 5242880 // 5MB
+            $maxsize = 55242880; // 50mb
+
+            $exploded = explode(',', $request->video);
+
+
+            $decoded = base64_decode($exploded[1]);
+
+            if (str_contains($exploded[0], 'mp4')) {
+                $extension = 'mp4';
+            } else if (str_contains($exploded[0], 'avi')) {
+                $extension = 'mpeg';
+            } else {
+                $extension = 'mov';
+            }
+
+
+
+            $fileNameVideo = $generarnombre . $hora . '.' . $extension;
+            $path = public_path() . '/video/' . $fileNameVideo;
+
+
+            file_put_contents($path, $decoded);
+        }
+
+
+
+        $galeria = new Galeria();
+
+
         $galeria->nombre = $request->nombre;
         $galeria->dpi = $request->dpi;
+        $galeria->fecha_hora = $time;
         $galeria->telefono = $request->telefono;
         $galeria->correo = $request->correo;
         $galeria->participante = $request->participante;
-        $galeria->img = $request->img;
-        $galeria->video = $request->video;
+        $galeria->fechan = $request->fechanacimiento;
+        $galeria->image = $fileName;
+        $galeria->video = $fileNameVideo;
         $galeria->estado = '1';
 
 
         $galeria->save();
-
-
-
-
-
     }
 }
