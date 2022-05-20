@@ -22,9 +22,37 @@ class GalleryController extends Controller
 
         $galeria = Galeria::where('estado', '=', '1')
         ->select('id','image')
-        ->orderBy('id', 'asc')->get();
+        ->orderBy('id', 'desc')->get();
 
         return ['galeria' => $galeria];
+
+
+
+
+    }
+
+
+    public function video(Request $request)
+    {
+
+
+
+
+
+        if (!$request->ajax()) return redirect('/');
+
+
+             $id = $request->galeria;
+
+
+
+
+        $video = Galeria::where('id', '=', $id)
+        ->select('video','id')->get(1);
+
+      //return $video[0]->video;
+
+      return ['video' => $video];
 
 
 

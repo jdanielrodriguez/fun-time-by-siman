@@ -5504,6 +5504,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {},
@@ -5517,6 +5519,7 @@ __webpack_require__.r(__webpack_exports__);
       grupo: [""],
       img: null,
       video: null,
+      mostrar: 0,
       errorMostrarMsjgaleria: [],
       mensaje: "",
       deshabilitar_boton: 0,
@@ -5529,6 +5532,13 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
+      sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+        title: "Checking...",
+        text: "Please wait",
+        imageUrl: "img/loading.gif",
+        showConfirmButton: false,
+        allowOutsideClick: false
+      });
       var me = this;
       axios.post("/galeria/registro", {
         nombre: this.nombre,
@@ -5547,6 +5557,7 @@ __webpack_require__.r(__webpack_exports__);
           showConfirmButton: false,
           timer: 1500
         });
+        me.mostrar = 0;
         window.location.reload();
       })["catch"](function (error) {
         console.log(error);
@@ -5575,6 +5586,7 @@ __webpack_require__.r(__webpack_exports__);
     getVideo: function getVideo() {
       var _this2 = this;
 
+      this.mostrar = 1;
       var input = document.getElementById("video");
       var video = input.files[0];
       this.video = video;
@@ -5748,12 +5760,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       urlImage: 'img/',
+      urlVideo: 'video/',
       arrayGaleria: [],
-      mostrar: 0
+      mostrar: 0,
+      getVideo: "",
+      arrayVideo: []
     };
   },
   methods: {
@@ -5776,21 +5794,25 @@ __webpack_require__.r(__webpack_exports__);
       var me = this;
       var url = '/gallery/list';
       axios.get(url).then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         var respuesta = response.data;
         me.arrayGaleria = respuesta.galeria;
-        swal.fire({
-          title: "Finished!",
-          showConfirmButton: false,
-          timer: 1000
-        });
       })["catch"](function (error) {
         console.log(error);
       });
     },
     verVideo: function verVideo(galeria) {
-      var id = galeria;
-    }
+      var me = this;
+      var url = '/gallery/video?galeria=' + galeria;
+      axios.get(url).then(function (response) {
+        console.log(response.data);
+        var respuesta = response.data;
+        me.arrayVideo = respuesta.video;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cerrarModal: function cerrarModal() {}
   },
   mounted: function mounted() {
     this.listarGaleria();
@@ -32504,18 +32526,33 @@ var render = function () {
               ),
             ]),
             _vm._v(" "),
-            _c("video", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.file != "",
-                  expression: "file != ''",
-                },
-              ],
-              staticStyle: { width: "100%" },
-              attrs: { autoplay: "", id: "video-preview", controls: "" },
-            }),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.mostrar,
+                    expression: "mostrar",
+                  },
+                ],
+              },
+              [
+                _c("video", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.file != "",
+                      expression: "file != ''",
+                    },
+                  ],
+                  staticStyle: { width: "100%" },
+                  attrs: { autoplay: "", id: "video-preview", controls: "" },
+                }),
+              ]
+            ),
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
@@ -32663,7 +32700,89 @@ var render = function () {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c(
+        "div",
+        {
+          staticClass: "portfolio-modal modal fade",
+          attrs: {
+            id: "portfolioModal2",
+            tabindex: "-1",
+            "aria-labelledby": "portfolioModal2",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c("div", { staticClass: "modal-dialog modal-xl" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body text-center pb-5" }, [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "row justify-content-center" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-8" },
+                      [
+                        _c(
+                          "h2",
+                          {
+                            staticClass:
+                              "portfolio-modal-title text-secondary text-uppercase mb-0",
+                          },
+                          [_vm._v("Video")]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _vm._l(_vm.arrayVideo, function (video) {
+                          return _c("div", { key: video.id }, [
+                            _c(
+                              "video",
+                              {
+                                attrs: {
+                                  id: "video",
+                                  width: "100%",
+                                  controls: "",
+                                },
+                              },
+                              [
+                                _c("source", {
+                                  attrs: {
+                                    src: _vm.urlVideo + video.video,
+                                    type: "video/mp4",
+                                  },
+                                }),
+                              ]
+                            ),
+                          ])
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { "data-bs-dismiss": "modal" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.cerrarModal()
+                              },
+                            },
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-xmark fa-fw" }),
+                            _vm._v(
+                              "\n                                    Cerrar\n                                "
+                            ),
+                          ]
+                        ),
+                      ],
+                      2
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
       _vm._v(" "),
       _vm._l(_vm.arrayGaleria, function (galeria) {
         return _c(
@@ -32725,89 +32844,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "portfolio-modal modal fade",
-        attrs: {
-          id: "portfolioModal2",
-          tabindex: "-1",
-          "aria-labelledby": "portfolioModal2",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c("div", { staticClass: "modal-dialog modal-xl" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header border-0" }, [
-              _c("button", {
-                staticClass: "btn-close",
-                attrs: {
-                  type: "button",
-                  "data-bs-dismiss": "modal",
-                  "aria-label": "Close",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body text-center pb-5" }, [
-              _c("div", { staticClass: "container" }, [
-                _c("div", { staticClass: "row justify-content-center" }, [
-                  _c("div", { staticClass: "col-lg-8" }, [
-                    _c(
-                      "h2",
-                      {
-                        staticClass:
-                          "portfolio-modal-title text-secondary text-uppercase mb-0",
-                      },
-                      [_vm._v("Tasty Cake")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "divider-custom" }, [
-                      _c("div", { staticClass: "divider-custom-line" }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "divider-custom-icon" }, [
-                        _c("i", { staticClass: "fas fa-star" }),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "divider-custom-line" }),
-                    ]),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticClass: "img-fluid rounded mb-5",
-                      attrs: {
-                        src: "assets/img/portfolio/cake.png",
-                        alt: "...",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "mb-4" }, [
-                      _vm._v(
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                                    Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis\n                                    inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod\n                                    consequuntur itaque. Nam."
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { "data-bs-dismiss": "modal" },
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-xmark fa-fw" }),
-                        _vm._v(
-                          "\n                                    Close Window\n                                "
-                        ),
-                      ]
-                    ),
-                  ]),
-                ]),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]
-    )
+    return _c("div", { staticClass: "divider-custom" }, [
+      _c("div", { staticClass: "divider-custom-line" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-custom-icon" }, [
+        _c("i", { staticClass: "fas fa-star" }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-custom-line" }),
+    ])
   },
 ]
 render._withStripped = true

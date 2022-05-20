@@ -17,14 +17,13 @@
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button></div>
+
                 <div class="modal-body text-center pb-5">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Video</h2>
                                 <!-- Icon Divider-->
                                 <div class="divider-custom">
                                     <div class="divider-custom-line"></div>
@@ -32,15 +31,19 @@
                                     <div class="divider-custom-line"></div>
                                 </div>
                                 <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
+                            <div v-for="(video) in arrayVideo" :key="video.id">
+
+                            <video id="video" width="100%" controls>
+                                    <source :src="urlVideo+video.video" type="video/mp4">
+                                    </video>
+
+                            </div>
+
                                 <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis
-                                    inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod
-                                    consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
+
+                                <button class="btn btn-primary" @click="cerrarModal()" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
+                                    Cerrar
                                 </button>
                             </div>
                         </div>
@@ -99,8 +102,12 @@ export default {
         return {
 
              urlImage:'img/',
+             urlVideo:'video/',
             arrayGaleria: [],
              mostrar:0,
+             getVideo:"",
+             arrayVideo: [],
+
 
 
         };
@@ -135,17 +142,10 @@ export default {
                 let me = this;
                  var url= '/gallery/list';
                   axios.get(url).then(function (response) {
-                  console.log(response.data);
+                  //console.log(response.data);
 
                     var respuesta= response.data;
                     me.arrayGaleria = respuesta.galeria;
-
-                    swal.fire({
-                      title: "Finished!",
-                      showConfirmButton: false,
-                      timer: 1000
-                    });
-
 
 
                 })
@@ -157,11 +157,37 @@ export default {
 
         verVideo(galeria){
 
-            let id = galeria;
+
+
+
+             let me = this;
+
+                 var url= '/gallery/video?galeria='+galeria;
+                  axios.get(url).then(function (response) {
+
+
+
+                  console.log(response.data);
+
+                    var respuesta= response.data;
+                    me.arrayVideo = respuesta.video;
+
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
 
 
         },
+
+
+        cerrarModal(){
+
+
+
+        }
 
 
     },
