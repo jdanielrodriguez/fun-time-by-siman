@@ -21,7 +21,7 @@ class GalleryController extends Controller
 
 
         $galeria = Galeria::where('estado', '=', '1')
-            ->select('id', 'image')
+            ->select('id', 'image', 'participante')
             ->orderBy('id', 'desc')->get();
 
         return ['galeria' => $galeria];
@@ -44,7 +44,7 @@ class GalleryController extends Controller
 
 
         $video = Galeria::where('id', '=', $id)
-            ->select('video', 'id')->get(1);
+            ->select('video', 'id', 'participante')->get(1);
 
         //return $video[0]->video;
 
@@ -134,6 +134,7 @@ class GalleryController extends Controller
 
 
         $galeria->nombre = $request->nombre;
+        $galeria->apellido = $request->apellido;
         $galeria->dpi = $request->dpi;
         $galeria->fecha_hora = $time;
         $galeria->telefono = $request->telefono;
