@@ -24,15 +24,33 @@
                             id="nombre"
                             type="text"
                             v-model="nombre"
-                            placeholder="Nombre de Encargado..."
+                            placeholder="Nombre"
                             data-sb-validations="required"
                         />
-                        <label for="nombre">Nombre Encargado</label>
+                        <label for="nombre">Nombre</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
                             El nombre del encargado es Requerido.
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="apellido"
+                            type="text"
+                            v-model="apellido"
+                            placeholder="Apellido"
+                            data-sb-validations="required"
+                        />
+                        <label for="apellido">Apellido</label>
+                        <div
+                            class="invalid-feedback"
+                            data-sb-feedback="name:required"
+                        >
+                            El Apellido del encargado es Requerido.
                         </div>
                     </div>
                     <!-- DPI input-->
@@ -51,24 +69,6 @@
                             data-sb-feedback="name:required"
                         >
                             El DPI es Requerido.
-                        </div>
-                    </div>
-                    <!-- Telefono input-->
-                    <div class="form-floating mb-3">
-                        <input
-                            class="form-control"
-                            id="telefono"
-                            type="text"
-                            v-model="telefono"
-                            placeholder="telefono"
-                            data-sb-validations="required"
-                        />
-                        <label for="telefono">Teléfono</label>
-                        <div
-                            class="invalid-feedback"
-                            data-sb-feedback="name:required"
-                        >
-                            El Telefono Requerido.
                         </div>
                     </div>
                     <!-- Email address input-->
@@ -95,6 +95,24 @@
                             El correo no es Valido.
                         </div>
                     </div>
+                    <!-- Telefono input-->
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="telefono"
+                            type="text"
+                            v-model="telefono"
+                            placeholder="telefono"
+                            data-sb-validations="required"
+                        />
+                        <label for="telefono">Teléfono</label>
+                        <div
+                            class="invalid-feedback"
+                            data-sb-feedback="name:required"
+                        >
+                            El Telefono Requerido.
+                        </div>
+                    </div>
                     <!-- Nombre Participante input-->
                     <div class="form-floating mb-3">
                         <input
@@ -102,10 +120,10 @@
                             id="telefono"
                             type="text"
                             v-model="participante"
-                            placeholder="Participante"
+                            placeholder="Nombre de hija o hijo"
                             data-sb-validations="required"
                         />
-                        <label for="participante">Nombre de hijo o hija</label>
+                        <label for="participante">Nombre de hija o hijo</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -115,23 +133,29 @@
                     </div>
                     <!-- Grupo Select -->
                     <div class="form-floating mb-3">
-
-                       <label for="grupo">Seleccione un grupo</label>
-                         <div>
-                            <select class="form-select" aria-label="Default select example"  v-model="grupo" name="" id="" data-sb-validations="required">
-
-                          <option value="0" disabled>Seleccione un grupo</option>
-                            <option value="1">Grupo 1</option>
-                            <option value="2">Grupo 2</option>
-
-                        </select>
-                         </div>
+                        <label for="grupo">Seleccione una categoria</label>
+                        <div>
+                            <select
+                                class="form-select"
+                                aria-label="Default select example"
+                                v-model="grupo"
+                                name=""
+                                id=""
+                                data-sb-validations="required"
+                            >
+                                <option value="0" disabled>
+                                    Seleccione un grupo
+                                </option>
+                                <option value="1">De 4 a 7 años</option>
+                                <option value="2">De 8 a 12 años</option>
+                            </select>
+                        </div>
 
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            El grupo es requerido.
+                            La categoria es requerida.
                         </div>
                     </div>
 
@@ -172,16 +196,15 @@
                             El video requerida.
                         </div>
                     </div>
-                 <div v-show="mostrar">
-                   <video
-                        autoplay
-                        id="video-preview"
-                        style="width: 100%"
-                        controls
-                        v-show="file != ''"
-                    />
-                 </div>
-
+                    <div v-show="mostrar">
+                        <video
+                            autoplay
+                            id="video-preview"
+                            style="width: 100%"
+                            controls
+                            v-show="file != ''"
+                        />
+                    </div>
 
                     <!-- Submit success message-->
                     <!---->
@@ -190,14 +213,8 @@
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center mb-3">
                             <div class="fw-bolder">
-                                Form submission successful!
+                                El participante se registro correctamente
                             </div>
-                            To activate this form, sign up at
-                            <br />
-                            <a
-                                href="https://startbootstrap.com/solution/contact-forms"
-                                >https://startbootstrap.com/solution/contact-forms</a
-                            >
                         </div>
                     </div>
                     <!-- Submit error message-->
@@ -206,6 +223,24 @@
                     <!-- an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage">
                         <div class="text-center text-danger mb-3"></div>
+                    </div>
+
+
+                    <!-- Nombre Participante input-->
+                    <div class="me-auto mb-3">
+                        <input
+                            id="teminos"
+                            type="checkbox"
+                            v-model="teminos"
+                            data-sb-validations="required"
+                        />
+                        <label for="teminos"> Acepto <a href="#" class="">Términos y Condiciones</a></label>
+                        <div
+                            class="invalid-feedback"
+                            data-sb-feedback="name:required"
+                        >
+                            Debe Aceptar Términos y Condiciones
+                        </div>
                     </div>
                 </form>
             </div>
@@ -220,15 +255,14 @@
             </div>
             <!-- Submit Button-->
             <div class="w-100">
-            <button
-                class="btn btn-primary btn-md w-25 shadow mt-3"
-                id="submitButton"
-                @click="registrar()"
-            >
-                Enviar
-            </button>
+                <button
+                    class="btn btn-primary btn-md w-25 shadow mt-3"
+                    id="submitButton"
+                    @click="registrar()"
+                >
+                    Enviar
+                </button>
             </div>
-
         </div>
     </div>
 </template>
@@ -260,20 +294,17 @@ export default {
 
     methods: {
         registrar() {
-
-
             if (this.validar()) {
                 return;
             }
 
             Swal.fire({
-              title: "Checking...",
-              text: "Please wait",
-              imageUrl: "img/loading.gif",
-              showConfirmButton: false,
-              allowOutsideClick: false
+                title: "Checking...",
+                text: "Please wait",
+                imageUrl: "img/loading.gif",
+                showConfirmButton: false,
+                allowOutsideClick: false,
             });
-
 
             let me = this;
 
@@ -296,14 +327,12 @@ export default {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    me.mostrar=0;
+                    me.mostrar = 0;
                     window.location.reload();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
         },
 
         testing() {
@@ -326,11 +355,8 @@ export default {
             };
         },
 
-
-
         getVideo() {
-
-             this.mostrar=1;
+            this.mostrar = 1;
             let input = document.getElementById("video");
             let video = input.files[0];
             this.video = video;
@@ -341,12 +367,9 @@ export default {
                 document.getElementById("video-preview").src = freader.result;
                 // alert(this.video);
             };
-
         },
 
         validar() {
-
-
             this.errorGaleria = 0;
             this.errorMostrarMsjgaleria = [];
 
@@ -375,12 +398,10 @@ export default {
                     "El Nombre Participante no puede estar vacio."
                 );
             }
-            if (this.grupo[0]=="" || this.grupo[0]==0) {
+            if (this.grupo[0] == "" || this.grupo[0] == 0) {
                 this.errorMostrarMsjgaleria.push(
                     "El Grupo no puede estar Vacio."
                 );
-
-
             }
             if (!this.img) {
                 this.errorMostrarMsjgaleria.push(

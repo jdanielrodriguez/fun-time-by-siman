@@ -5503,6 +5503,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {},
@@ -5760,11 +5794,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      urlImage: 'img/',
-      urlVideo: 'video/',
+      urlImage: "img/",
+      urlVideo: "video/",
       arrayGaleria: [],
       mostrar: 0,
       getVideo: "",
@@ -5774,22 +5826,22 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     listarGaleria: function listarGaleria() {
       /*
-        if (this.validarReporte()){
-          return;
-      }
-      console.log(lugar);
-      console.log(de);
-      console.log(a);
-           swal.fire({
-      title: "Checking...",
-      text: "Please wait",
-      imageUrl: "img/loading.gif",
-      showConfirmButton: false,
-      allowOutsideClick: false
+           if (this.validarReporte()){
+              return;
+          }
+          console.log(lugar);
+          console.log(de);
+          console.log(a);
+              swal.fire({
+        title: "Checking...",
+        text: "Please wait",
+        imageUrl: "img/loading.gif",
+        showConfirmButton: false,
+        allowOutsideClick: false
       });
       */
       var me = this;
-      var url = '/gallery/list';
+      var url = "/gallery/list";
       axios.get(url).then(function (response) {
         //console.log(response.data);
         var respuesta = response.data;
@@ -5800,7 +5852,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     verVideo: function verVideo(galeria) {
       var me = this;
-      var url = '/gallery/video?galeria=' + galeria;
+      var url = "/gallery/video?galeria=" + galeria;
       axios.get(url).then(function (response) {
         console.log(response.data);
         var respuesta = response.data;
@@ -32161,7 +32213,7 @@ var render = function () {
                 attrs: {
                   id: "nombre",
                   type: "text",
-                  placeholder: "Nombre de Encargado...",
+                  placeholder: "Nombre",
                   "data-sb-validations": "required",
                 },
                 domProps: { value: _vm.nombre },
@@ -32175,9 +32227,7 @@ var render = function () {
                 },
               }),
               _vm._v(" "),
-              _c("label", { attrs: { for: "nombre" } }, [
-                _vm._v("Nombre Encargado"),
-              ]),
+              _c("label", { attrs: { for: "nombre" } }, [_vm._v("Nombre")]),
               _vm._v(" "),
               _c(
                 "div",
@@ -32188,6 +32238,50 @@ var render = function () {
                 [
                   _vm._v(
                     "\n                        El nombre del encargado es Requerido.\n                    "
+                  ),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-floating mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.apellido,
+                    expression: "apellido",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "apellido",
+                  type: "text",
+                  placeholder: "Apellido",
+                  "data-sb-validations": "required",
+                },
+                domProps: { value: _vm.apellido },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.apellido = $event.target.value
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "apellido" } }, [_vm._v("Apellido")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  attrs: { "data-sb-feedback": "name:required" },
+                },
+                [
+                  _vm._v(
+                    "\n                        El Apellido del encargado es Requerido.\n                    "
                   ),
                 ]
               ),
@@ -32232,50 +32326,6 @@ var render = function () {
                 [
                   _vm._v(
                     "\n                        El DPI es Requerido.\n                    "
-                  ),
-                ]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-floating mb-3" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.telefono,
-                    expression: "telefono",
-                  },
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "telefono",
-                  type: "text",
-                  placeholder: "telefono",
-                  "data-sb-validations": "required",
-                },
-                domProps: { value: _vm.telefono },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.telefono = $event.target.value
-                  },
-                },
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "telefono" } }, [_vm._v("Teléfono")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "invalid-feedback",
-                  attrs: { "data-sb-feedback": "name:required" },
-                },
-                [
-                  _vm._v(
-                    "\n                        El Telefono Requerido.\n                    "
                   ),
                 ]
               ),
@@ -32344,6 +32394,50 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
+                    value: _vm.telefono,
+                    expression: "telefono",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "telefono",
+                  type: "text",
+                  placeholder: "telefono",
+                  "data-sb-validations": "required",
+                },
+                domProps: { value: _vm.telefono },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.telefono = $event.target.value
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "telefono" } }, [_vm._v("Teléfono")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  attrs: { "data-sb-feedback": "name:required" },
+                },
+                [
+                  _vm._v(
+                    "\n                        El Telefono Requerido.\n                    "
+                  ),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-floating mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
                     value: _vm.participante,
                     expression: "participante",
                   },
@@ -32352,7 +32446,7 @@ var render = function () {
                 attrs: {
                   id: "telefono",
                   type: "text",
-                  placeholder: "Participante",
+                  placeholder: "Nombre de hija o hijo",
                   "data-sb-validations": "required",
                 },
                 domProps: { value: _vm.participante },
@@ -32367,7 +32461,7 @@ var render = function () {
               }),
               _vm._v(" "),
               _c("label", { attrs: { for: "participante" } }, [
-                _vm._v("Nombre de hijo o hija"),
+                _vm._v("Nombre de hija o hijo"),
               ]),
               _vm._v(" "),
               _c(
@@ -32386,7 +32480,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "form-floating mb-3" }, [
               _c("label", { attrs: { for: "grupo" } }, [
-                _vm._v("Seleccione un grupo"),
+                _vm._v("Seleccione una categoria"),
               ]),
               _vm._v(" "),
               _c("div", [
@@ -32426,15 +32520,17 @@ var render = function () {
                   },
                   [
                     _c("option", { attrs: { value: "0", disabled: "" } }, [
-                      _vm._v("Seleccione un grupo"),
+                      _vm._v(
+                        "\n                                Seleccione un grupo\n                            "
+                      ),
                     ]),
                     _vm._v(" "),
                     _c("option", { attrs: { value: "1" } }, [
-                      _vm._v("Grupo 1"),
+                      _vm._v("De 4 a 7 años"),
                     ]),
                     _vm._v(" "),
                     _c("option", { attrs: { value: "2" } }, [
-                      _vm._v("Grupo 2"),
+                      _vm._v("De 8 a 12 años"),
                     ]),
                   ]
                 ),
@@ -32448,7 +32544,7 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    "\n                        El grupo es requerido.\n                    "
+                    "\n                        La categoria es requerida.\n                    "
                   ),
                 ]
               ),
@@ -32552,6 +32648,65 @@ var render = function () {
             _vm._m(0),
             _vm._v(" "),
             _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "me-auto mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.teminos,
+                    expression: "teminos",
+                  },
+                ],
+                attrs: {
+                  id: "teminos",
+                  type: "checkbox",
+                  "data-sb-validations": "required",
+                },
+                domProps: {
+                  checked: Array.isArray(_vm.teminos)
+                    ? _vm._i(_vm.teminos, null) > -1
+                    : _vm.teminos,
+                },
+                on: {
+                  change: function ($event) {
+                    var $$a = _vm.teminos,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.teminos = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.teminos = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.teminos = $$c
+                    }
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  attrs: { "data-sb-feedback": "name:required" },
+                },
+                [
+                  _vm._v(
+                    "\n                        Debe Aceptar Términos y Condiciones\n                    "
+                  ),
+                ]
+              ),
+            ]),
           ]
         ),
       ]),
@@ -32596,7 +32751,7 @@ var render = function () {
               },
             },
           },
-          [_vm._v("\n            Enviar\n        ")]
+          [_vm._v("\n                Enviar\n            ")]
         ),
       ]),
     ]),
@@ -32614,23 +32769,9 @@ var staticRenderFns = [
         _c("div", { staticClass: "text-center mb-3" }, [
           _c("div", { staticClass: "fw-bolder" }, [
             _vm._v(
-              "\n                            Form submission successful!\n                        "
+              "\n                            El participante se registro correctamente\n                        "
             ),
           ]),
-          _vm._v(
-            "\n                        To activate this form, sign up at\n                        "
-          ),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://startbootstrap.com/solution/contact-forms",
-              },
-            },
-            [_vm._v("https://startbootstrap.com/solution/contact-forms")]
-          ),
         ]),
       ]
     )
@@ -32644,6 +32785,15 @@ var staticRenderFns = [
       { staticClass: "d-none", attrs: { id: "submitErrorMessage" } },
       [_c("div", { staticClass: "text-center text-danger mb-3" })]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "teminos" } }, [
+      _vm._v(" Acepto "),
+      _c("a", { attrs: { href: "#" } }, [_vm._v("Términos y Condiciones")]),
+    ])
   },
 ]
 render._withStripped = true
@@ -32678,7 +32828,7 @@ var render = function () {
           staticClass:
             "page-section-heading text-center text-uppercase text-secondary mb-0",
         },
-        [_vm._v("Galeria")]
+        [_vm._v("\n        Galeria\n    ")]
       ),
       _vm._v(" "),
       _vm._m(0),
@@ -32710,7 +32860,11 @@ var render = function () {
                             staticClass:
                               "portfolio-modal-title text-secondary text-uppercase mb-0",
                           },
-                          [_vm._v("Video")]
+                          [
+                            _vm._v(
+                              "\n                                    Video\n                                "
+                            ),
+                          ]
                         ),
                         _vm._v(" "),
                         _vm._m(1),
@@ -32752,7 +32906,7 @@ var render = function () {
                           [
                             _c("i", { staticClass: "fas fa-xmark fa-fw" }),
                             _vm._v(
-                              "\r\n                                    Cerrar\r\n                                "
+                              "\n                                    Cerrar\n                                "
                             ),
                           ]
                         ),
@@ -32796,7 +32950,7 @@ var render = function () {
                         },
                       },
                     },
-                    [_vm._v("Video")]
+                    [_vm._v("\n                    Video\n                ")]
                   ),
                 ]),
               ]

@@ -94,6 +94,7 @@
 
 body {
     margin: 0;
+    font-family: var(--bs-body-font-family);
     color: var(--bs-body-color);
     text-align: var(--bs-body-text-align);
     background-color: #fff7fc;
@@ -2843,6 +2844,7 @@ textarea.form-control-lg {
     padding-top: 2.5rem;
     padding-bottom: 1.5rem;
     height: 75px;
+    font-size: 16px;
 }
 
 .form-floating>.form-control:-webkit-autofill {
@@ -12111,7 +12113,7 @@ html {
 }
 
 .form-floating label {
-    font-size: 1.5rem;
+    font-size: 16px;
     color: #6c757d;
 }
 
