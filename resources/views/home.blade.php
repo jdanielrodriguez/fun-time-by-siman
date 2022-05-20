@@ -17,6 +17,18 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SZ8VK3QHT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8SZ8VK3QHT');
+    </script>
 </head>
 
 <body id="page-top">
@@ -54,7 +66,7 @@
             <img src="asset/image/lista.png" alt="">
         </div>
     </section>
-    <section class="page-section form-content" >
+    <section class="page-section form-content">
         <div id="app">
             <form-component></form-component>
             <section class="page-section portfolio" id="galeria">
@@ -143,8 +155,8 @@
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button"
-                        data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                        aria-label="Close"></button></div>
                 <div class="modal-body text-center pb-5">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -180,8 +192,8 @@
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button"
-                        data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                        aria-label="Close"></button></div>
                 <div class="modal-body text-center pb-5">
                     <div class="container">
                         <div class="row justify-content-center">

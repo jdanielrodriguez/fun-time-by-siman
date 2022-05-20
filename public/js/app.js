@@ -5501,14 +5501,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
-//
-//
-//
->>>>>>> 8407044ab6979bc378a59486b95d2052a8a23b79
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {},
@@ -32689,82 +32683,6 @@ var render = function () {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-<<<<<<< HEAD
-      _vm._l(_vm.arrayReporte, function (venta, index) {
-        return _c("tr", { key: venta.id }, [
-          _c("td", [
-            _vm._v(
-              "\r\n                                            " +
-                _vm._s(index + 1) +
-                "\r\n                                        "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success btn-sm",
-                attrs: { type: "button" },
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.verVenta(venta.id)
-                  },
-                },
-              },
-              [_c("i", { staticClass: "fas fa-eye" })]
-            ),
-            _vm._v("  \r\n                                            "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-info btn-sm",
-                attrs: { type: "button" },
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.pdfVenta(venta.id)
-                  },
-                },
-              },
-              [_c("i", { staticClass: "fas fa-file-pdf" })]
-            ),
-            _vm._v("  \r\n\r\n                                        "),
-          ]),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.usuario) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.nombre) } }),
-          _vm._v(" "),
-          _c("td", {
-            domProps: { textContent: _vm._s(venta.tipo_comprobante) },
-          }),
-          _vm._v(" "),
-          _c("td", {
-            domProps: { textContent: _vm._s(venta.serie_comprobante) },
-          }),
-          _vm._v(" "),
-          _c("td", {
-            domProps: { textContent: _vm._s(venta.num_comprobante) },
-          }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.fecha_hora) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.total) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.recibido) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.cambio) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.totalc) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.totalu) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.estado) } }),
-        ])
-      }),
-=======
       _c(
         "div",
         {
@@ -32834,7 +32752,7 @@ var render = function () {
                           [
                             _c("i", { staticClass: "fas fa-xmark fa-fw" }),
                             _vm._v(
-                              "\n                                    Cerrar\n                                "
+                              "\r\n                                    Cerrar\r\n                                "
                             ),
                           ]
                         ),
@@ -32848,19 +32766,12 @@ var render = function () {
           ]),
         ]
       ),
->>>>>>> 8407044ab6979bc378a59486b95d2052a8a23b79
       _vm._v(" "),
       _vm._l(_vm.arrayGaleria, function (galeria) {
         return _c(
           "div",
           { key: galeria.id, staticClass: "row justify-content-center" },
           [
-<<<<<<< HEAD
-            _vm._v(
-              "\r\n                " +
-                _vm._s(index + 1) +
-                "\r\n                "
-=======
             _c(
               "div",
               { staticClass: "card", staticStyle: { width: "18rem" } },
@@ -32889,7 +32800,6 @@ var render = function () {
                   ),
                 ]),
               ]
->>>>>>> 8407044ab6979bc378a59486b95d2052a8a23b79
             ),
           ]
         )
