@@ -111,11 +111,15 @@ export default {
     },
 
     methods: {
-        listar() {
+        listarGaleria() {
 
         },
 
 
     },
+     mounted() {
+        this.listarGaleria();
+
+    }
 };
 </script>
