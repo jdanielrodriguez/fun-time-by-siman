@@ -234,7 +234,7 @@
                             v-model="teminos"
                             data-sb-validations="required"
                         />
-                        <label for="teminos"> Acepto <a href="#" class="">Términos y Condiciones</a></label>
+                        <label for="teminos"> Acepto <a href="#terminos" data-bs-toggle="modal" data-bs-target="#terminos" class=""><u>Términos y Condiciones</u></a></label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"

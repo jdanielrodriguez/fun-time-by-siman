@@ -77,8 +77,7 @@
     <!-- Portfolio Modal 1-->
 
     <!-- Portfolio Modal 2-->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2"
-        aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="terminos" tabindex="-1" aria-labelledby="terminos" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
@@ -86,22 +85,89 @@
                 <div class="modal-body text-center pb-5">
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
+                            <div class="col-lg-8 mx-auto">
+                                <h2>
+                                    Términos y Condiciones Funtime Casting Siman.
+                                </h2>
+                                <h4 class="text-start text-justify ps-3">
+                                    1. ¿Cómo Participar?
+                                </h4>
+                                <p class="text-start text-justify">
+                                    Tendrás que llenar un formulario online en www.funtimesiman.com con los datos de
+                                    padres o tutor legal, aceptando la cesión de las imágenes del casting de niños a
+                                    SIMAN al enviar el formulario, así como las fotografías de la pasarela las
+                                    cuales
+                                    aparecerán posteriormente en redes sociales de ser seleccionado ganador.
+                                </p>
+                                <br />
+                                <p class="text-start text-justify">
+                                    Subir una foto de buena calidad y un video mostrando sus habilidades de
+                                    modelaje.
+                                    Límite de peso del vídeo: 5 mb, fotografía 2 mb.
+                                </p>
+                                <br />
+                                <div class="text-start text-justify">
+
+                                    La niña o niño debe cumplir con las edades de las 2 categorías:
+                                    <br />
+                                    <ul>
+                                        <li>De 4 a 7 años.</li>
+                                        <li>De 8 a 12 años.</li>
+                                    </ul>
+                                    Se escogerán 3 niños por categoría.
                                 </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis
-                                    inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod
-                                    consequuntur itaque. Nam.</p>
+
+                                <h4 class="text-start text-justify ps-3 mt-3">
+                                    2. Premios:
+                                </h4>
+                                <div class="text-start text-justify">
+                                    <ul>
+                                        <li>Participar en la pasarela de niños by Siman</li>
+                                        <li>Un certificado de regalo de Q1,000.00 para cada ganador, el cual se
+                                            entregará el
+                                            día del evento.</li>
+                                        <li>Se les obsequiará los outfits que utilizarán en la pasarela.</li>
+                                    </ul>
+                                </div>
+
+
+                                <h4 class="text-start text-justify ps-3 mt-3">
+                                    3. ¿Cómo se anunciarán a los ganadores?
+                                </h4>
+
+                                <p class="text-start text-justify">
+                                    Los ganadores serán llamados por SIMAN para indicarles los detalles de la pasarela
+                                    asi como el dia que deben llegar a tallarse la ropa para el evento, fecha y horario
+                                    inamovible.
+                                </p>
+
+                                <p class="text-start text-justify">
+                                    Durante la pasarela se tomarán fotografías de los modelos, las cuales se comprometen
+                                    a ceder todos los derechos de uso para fines publitarios sin fecha de caducidad.
+                                    Estas imágenes aparecerán, posteriormente, en redes sociales y en cualquier medio
+                                    que SIMAN utilice para comunicación publicitaria.
+                                </p>
+
+                                <h4 class="text-start text-justify ps-3 mt-3">
+                                    4. Fecha y Horario
+                                </h4>
+
+                                <p class="text-start text-justify">
+                                    La Pasarela Fun Time by Siman se llevará a cabo el Sábado 28 de mayo de 2022 a las
+                                    16:30 horas en la tienda de Siman Pradera Concepción. Esta fecha y hora puede variar
+                                    con previa notificación para coordinar a los participantes.
+                                </p>
+
+                                <h4 class="text-start text-justify ps-3 mt-3">
+                                    5. Formulario de inscripción.
+                                </h4>
+
+                                <p class="text-start text-justify">
+                                    Al completar los datos y enviar el formulario de inscripción, Ud esta aceptando los
+                                    terminos y condiciones descritos en este documento.
+                                </p>
+                            </div>
+                            <div class="col-lg-8 mx-auto">
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
                                     Close Window
