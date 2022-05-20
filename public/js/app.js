@@ -5720,16 +5720,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       urlImage: 'img/',
-      arrayGaleria: []
+      arrayGaleria: [],
+      mostrar: 0
     };
   },
   methods: {
     listarGaleria: function listarGaleria() {
-      Swal.fire('Good job!', 'You clicked the button!', 'success');
       /*
        if (this.validarReporte()){
           return;
@@ -5745,11 +5773,10 @@ __webpack_require__.r(__webpack_exports__);
       allowOutsideClick: false
       });
       */
-
       var me = this;
       var url = '/gallery/list';
       axios.get(url).then(function (response) {
-        console.log(response);
+        console.log(response.data);
         var respuesta = response.data;
         me.arrayGaleria = respuesta.galeria;
         swal.fire({
@@ -5761,9 +5788,12 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    MostrarModal: function MostrarModal() {}
+    verVideo: function verVideo(galeria) {
+      var id = galeria;
+    }
   },
-  mounted: function mounted() {//  this.listarGaleria();
+  mounted: function mounted() {
+    this.listarGaleria();
   }
 });
 
@@ -32419,7 +32449,7 @@ var render = function () {
               }),
               _vm._v(" "),
               _c("label", { attrs: { for: "participante" } }, [
-                _vm._v("Imagen"),
+                _vm._v("Imagen Max 2mb"),
               ]),
               _vm._v(" "),
               _c(
@@ -32456,7 +32486,9 @@ var render = function () {
                 },
               }),
               _vm._v(" "),
-              _c("label", { attrs: { for: "video" } }, [_vm._v("Video")]),
+              _c("label", { attrs: { for: "video" } }, [
+                _vm._v("Video Max 5mb"),
+              ]),
               _vm._v(" "),
               _c(
                 "div",
@@ -32631,106 +32663,42 @@ var render = function () {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _vm._l(_vm.arrayReporte, function (venta, index) {
-        return _c("tr", { key: venta.id }, [
-          _c("td", [
-            _vm._v(
-              "\n                                            " +
-                _vm._s(index + 1) +
-                "\n                                        "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success btn-sm",
-                attrs: { type: "button" },
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.verVenta(venta.id)
-                  },
-                },
-              },
-              [_c("i", { staticClass: "fas fa-eye" })]
-            ),
-            _vm._v("  \n                                            "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-info btn-sm",
-                attrs: { type: "button" },
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.pdfVenta(venta.id)
-                  },
-                },
-              },
-              [_c("i", { staticClass: "fas fa-file-pdf" })]
-            ),
-            _vm._v("  \n\n                                        "),
-          ]),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.usuario) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.nombre) } }),
-          _vm._v(" "),
-          _c("td", {
-            domProps: { textContent: _vm._s(venta.tipo_comprobante) },
-          }),
-          _vm._v(" "),
-          _c("td", {
-            domProps: { textContent: _vm._s(venta.serie_comprobante) },
-          }),
-          _vm._v(" "),
-          _c("td", {
-            domProps: { textContent: _vm._s(venta.num_comprobante) },
-          }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.fecha_hora) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.total) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.recibido) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.cambio) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.totalc) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.totalu) } }),
-          _vm._v(" "),
-          _c("td", { domProps: { textContent: _vm._s(venta.estado) } }),
-        ])
-      }),
+      _vm._m(1),
       _vm._v(" "),
-      _vm._l(_vm.arrayReporte, function (galeria, index) {
+      _vm._l(_vm.arrayGaleria, function (galeria) {
         return _c(
           "div",
           { key: galeria.id, staticClass: "row justify-content-center" },
           [
-            _vm._v(
-              "\n                " + _vm._s(index + 1) + "\n                "
+            _c(
+              "div",
+              { staticClass: "card", staticStyle: { width: "18rem" } },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: _vm.urlImage + galeria.image, alt: "..." },
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: {
+                        "data-bs-toggle": "modal",
+                        "data-bs-target": "#portfolioModal2",
+                      },
+                      on: {
+                        click: function ($event) {
+                          return _vm.verVideo(galeria.id)
+                        },
+                      },
+                    },
+                    [_vm._v("Video")]
+                  ),
+                ]),
+              ]
             ),
-            _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "portfolio-item mx-auto",
-                  attrs: { "data-bs-toggle": "modal", "data-bs-target": "#" },
-                },
-                [
-                  _vm._m(1, true),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: { src: _vm.urlImage + galeria.image, alt: "..." },
-                  }),
-                ]
-              ),
-            ]),
           ]
         )
       }),
@@ -32760,18 +32728,84 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass:
-          "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+        staticClass: "portfolio-modal modal fade",
+        attrs: {
+          id: "portfolioModal2",
+          tabindex: "-1",
+          "aria-labelledby": "portfolioModal2",
+          "aria-hidden": "true",
+        },
       },
       [
-        _c(
-          "div",
-          {
-            staticClass:
-              "portfolio-item-caption-content text-center text-white",
-          },
-          [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-        ),
+        _c("div", { staticClass: "modal-dialog modal-xl" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header border-0" }, [
+              _c("button", {
+                staticClass: "btn-close",
+                attrs: {
+                  type: "button",
+                  "data-bs-dismiss": "modal",
+                  "aria-label": "Close",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body text-center pb-5" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row justify-content-center" }, [
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c(
+                      "h2",
+                      {
+                        staticClass:
+                          "portfolio-modal-title text-secondary text-uppercase mb-0",
+                      },
+                      [_vm._v("Tasty Cake")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "divider-custom" }, [
+                      _c("div", { staticClass: "divider-custom-line" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "divider-custom-icon" }, [
+                        _c("i", { staticClass: "fas fa-star" }),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "divider-custom-line" }),
+                    ]),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticClass: "img-fluid rounded mb-5",
+                      attrs: {
+                        src: "assets/img/portfolio/cake.png",
+                        alt: "...",
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-4" }, [
+                      _vm._v(
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                                    Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis\n                                    inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod\n                                    consequuntur itaque. Nam."
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { "data-bs-dismiss": "modal" },
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-xmark fa-fw" }),
+                        _vm._v(
+                          "\n                                    Close Window\n                                "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
       ]
     )
   },

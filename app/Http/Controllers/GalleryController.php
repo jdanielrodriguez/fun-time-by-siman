@@ -12,13 +12,17 @@ class GalleryController extends Controller
     public function index(Request $request)
     {
 
-       return"Hola Controlador";
+
+
+
 
         if (!$request->ajax()) return redirect('/');
        // $galeria = new Galeria();
 
-        $galeria = Galeria::select('id','image')
-        ->orderBy('id', 'desc')->get();
+
+        $galeria = Galeria::where('estado', '=', '1')
+        ->select('id','image')
+        ->orderBy('id', 'asc')->get();
 
         return ['galeria' => $galeria];
 

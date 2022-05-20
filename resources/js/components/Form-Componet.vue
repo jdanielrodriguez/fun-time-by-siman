@@ -150,7 +150,7 @@
                             @change="getImage"
                             data-sb-validations="required"
                         />
-                        <label for="participante">Imagen</label>
+                        <label for="participante">Imagen Max 2mb</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -170,7 +170,7 @@
                             @change="getVideo(event)"
                             data-sb-validations="required"
                         />
-                        <label for="video">Video</label>
+                        <label for="video">Video Max 5mb</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -268,6 +268,8 @@ export default {
 
 
             let me = this;
+
+
 
             axios
                 .post("/galeria/registro", {

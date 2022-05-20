@@ -68,13 +68,14 @@
             <section class="page-section portfolio" id="portfolio">
 
 
+
                 <galeria-component></galeria-component>
 
 
-
             </section>
-
         </div>
+
+
 
 
     </section>
