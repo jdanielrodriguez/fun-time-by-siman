@@ -5501,6 +5501,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {},
@@ -5511,7 +5514,7 @@ __webpack_require__.r(__webpack_exports__);
       telefono: "",
       correo: "",
       participante: "",
-      fechaNacimiento: "",
+      grupo: [""],
       img: null,
       video: null,
       errorMostrarMsjgaleria: [],
@@ -5522,8 +5525,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     registrar: function registrar() {
-      console.log("registrar");
-
       if (this.validar()) {
         return;
       }
@@ -5535,7 +5536,7 @@ __webpack_require__.r(__webpack_exports__);
         correo: this.correo,
         telefono: this.telefono,
         participante: this.participante,
-        fechanacimiento: this.fechaNacimiento,
+        grupo: this.grupo,
         img: this.img,
         video: this.video
       }).then(function (response) {
@@ -5586,7 +5587,6 @@ __webpack_require__.r(__webpack_exports__);
       };
     },
     validar: function validar() {
-      console.log("validar");
       this.errorGaleria = 0;
       this.errorMostrarMsjgaleria = [];
 
@@ -5610,8 +5610,8 @@ __webpack_require__.r(__webpack_exports__);
         this.errorMostrarMsjgaleria.push("El Nombre Participante no puede estar vacio.");
       }
 
-      if (!this.fechaNacimiento) {
-        this.errorMostrarMsjgaleria.push("La Fecha de Naacimiento no puede estar vacio.");
+      if (this.grupo[0] == "" || this.grupo[0] == 0) {
+        this.errorMostrarMsjgaleria.push("El Grupo no puede estar Vacio.");
       }
 
       if (!this.img) {
@@ -5656,10 +5656,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -5724,56 +5720,52 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
-  mounted: function mounted() {
-    console.log("Component mounted.");
-  },
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      nombre: "",
-      dpi: "",
-      telefono: "",
-      correo: "",
-      participante: "",
-      fechaNacimiento: "",
-      img: null,
-      video: null,
-      errorMostrarMsjgaleria: [],
-      mensaje: "",
-      deshabilitar_boton: 0,
-      errorGaleria: 0
+      urlImage: 'img/',
+      arrayGaleria: []
     };
   },
   methods: {
-    listarGaleria: function listarGaleria() {}
+    listarGaleria: function listarGaleria() {
+      Swal.fire('Good job!', 'You clicked the button!', 'success');
+      /*
+       if (this.validarReporte()){
+          return;
+      }
+      console.log(lugar);
+      console.log(de);
+      console.log(a);
+          swal.fire({
+      title: "Checking...",
+      text: "Please wait",
+      imageUrl: "img/loading.gif",
+      showConfirmButton: false,
+      allowOutsideClick: false
+      });
+      */
+
+      var me = this;
+      var url = '/gallery/list';
+      axios.get(url).then(function (response) {
+        console.log(response);
+        var respuesta = response.data;
+        me.arrayGaleria = respuesta.galeria;
+        swal.fire({
+          title: "Finished!",
+          showConfirmButton: false,
+          timer: 1000
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    MostrarModal: function MostrarModal() {}
+  },
+  mounted: function mounted() {//  this.listarGaleria();
   }
-}, "mounted", function mounted() {
-  this.listarGaleria();
-}));
+});
 
 /***/ }),
 
@@ -32328,7 +32320,7 @@ var render = function () {
               }),
               _vm._v(" "),
               _c("label", { attrs: { for: "participante" } }, [
-                _vm._v("Participante"),
+                _vm._v("Nombre de hijo o hija"),
               ]),
               _vm._v(" "),
               _c(
@@ -32339,42 +32331,66 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    "\n                        El nombre del participante es requerido.\n                    "
+                    "\n                        El nombre de hijo o hija es requerido.\n                    "
                   ),
                 ]
               ),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-floating mb-3" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fechaNacimiento,
-                    expression: "fechaNacimiento",
-                  },
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  id: "fechan",
-                  type: "date",
-                  placeholder: "Fecha de Nacimiento",
-                  "data-sb-validations": "required",
-                },
-                domProps: { value: _vm.fechaNacimiento },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.fechaNacimiento = $event.target.value
-                  },
-                },
-              }),
+              _c("label", { attrs: { for: "grupo" } }, [
+                _vm._v("Seleccione un grupo"),
+              ]),
               _vm._v(" "),
-              _c("label", { attrs: { for: "participante" } }, [
-                _vm._v("Fecha de Nacimiento"),
+              _c("div", [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.grupo,
+                        expression: "grupo",
+                      },
+                    ],
+                    staticClass: "form-select",
+                    attrs: {
+                      "aria-label": "Default select example",
+                      name: "",
+                      id: "",
+                      "data-sb-validations": "required",
+                    },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.grupo = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "0", disabled: "" } }, [
+                      _vm._v("Seleccione un grupo"),
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [
+                      _vm._v("Grupo 1"),
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("Grupo 2"),
+                    ]),
+                  ]
+                ),
               ]),
               _vm._v(" "),
               _c(
@@ -32385,7 +32401,7 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    "\n                        La fecha de nacimiento es requerida.\n                    "
+                    "\n                        El grupo es requerido.\n                    "
                   ),
                 ]
               ),
@@ -32600,260 +32616,164 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container", attrs: { id: "fondo2" } }, [
+  return _c(
+    "div",
+    { staticClass: "container", attrs: { id: "fondo2" } },
+    [
       _c(
         "h2",
         {
           staticClass:
             "page-section-heading text-center text-uppercase text-secondary mb-0",
         },
-        [_vm._v("Portfolio")]
+        [_vm._v("Galeria")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "divider-custom" }, [
-        _c("div", { staticClass: "divider-custom-line" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "divider-custom-icon" }, [
-          _c("i", { staticClass: "fas fa-star" }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "divider-custom-line" }),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.arrayReporte, function (venta, index) {
+        return _c("tr", { key: venta.id }, [
+          _c("td", [
+            _vm._v(
+              "\n                                            " +
+                _vm._s(index + 1) +
+                "\n                                        "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success btn-sm",
+                attrs: { type: "button" },
+                on: {
+                  click: function ($event) {
+                    $event.preventDefault()
+                    return _vm.verVenta(venta.id)
+                  },
+                },
+              },
+              [_c("i", { staticClass: "fas fa-eye" })]
+            ),
+            _vm._v("  \n                                            "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info btn-sm",
+                attrs: { type: "button" },
+                on: {
+                  click: function ($event) {
+                    $event.preventDefault()
+                    return _vm.pdfVenta(venta.id)
+                  },
+                },
+              },
+              [_c("i", { staticClass: "fas fa-file-pdf" })]
+            ),
+            _vm._v("  \n\n                                        "),
+          ]),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.usuario) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.nombre) } }),
+          _vm._v(" "),
+          _c("td", {
+            domProps: { textContent: _vm._s(venta.tipo_comprobante) },
+          }),
+          _vm._v(" "),
+          _c("td", {
+            domProps: { textContent: _vm._s(venta.serie_comprobante) },
+          }),
+          _vm._v(" "),
+          _c("td", {
+            domProps: { textContent: _vm._s(venta.num_comprobante) },
+          }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.fecha_hora) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.total) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.recibido) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.cambio) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.totalc) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.totalu) } }),
+          _vm._v(" "),
+          _c("td", { domProps: { textContent: _vm._s(venta.estado) } }),
+        ])
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.arrayReporte, function (galeria, index) {
+        return _c(
+          "div",
+          { key: galeria.id, staticClass: "row justify-content-center" },
+          [
+            _vm._v(
+              "\n                " + _vm._s(index + 1) + "\n                "
+            ),
+            _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "portfolio-item mx-auto",
+                  attrs: { "data-bs-toggle": "modal", "data-bs-target": "#" },
+                },
+                [
+                  _vm._m(1, true),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    attrs: { src: _vm.urlImage + galeria.image, alt: "..." },
+                  }),
+                ]
+              ),
+            ]),
+          ]
+        )
+      }),
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "divider-custom" }, [
+      _c("div", { staticClass: "divider-custom-line" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-custom-icon" }, [
+        _c("i", { staticClass: "fas fa-star" }),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
-          _c(
-            "div",
-            {
-              staticClass: "portfolio-item mx-auto",
-              attrs: {
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#portfolioModal1",
-              },
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "portfolio-item-caption-content text-center text-white",
-                    },
-                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: "assets/img/portfolio/cabin.png", alt: "..." },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
-          _c(
-            "div",
-            {
-              staticClass: "portfolio-item mx-auto",
-              attrs: {
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#portfolioModal2",
-              },
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "portfolio-item-caption-content text-center text-white",
-                    },
-                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: "assets/img/portfolio/cake.png", alt: "..." },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
-          _c(
-            "div",
-            {
-              staticClass: "portfolio-item mx-auto",
-              attrs: {
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#portfolioModal3",
-              },
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "portfolio-item-caption-content text-center text-white",
-                    },
-                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: "assets/img/portfolio/circus.png", alt: "..." },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5 mb-lg-0" }, [
-          _c(
-            "div",
-            {
-              staticClass: "portfolio-item mx-auto",
-              attrs: {
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#portfolioModal4",
-              },
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "portfolio-item-caption-content text-center text-white",
-                    },
-                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: "assets/img/portfolio/game.png", alt: "..." },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5 mb-md-0" }, [
-          _c(
-            "div",
-            {
-              staticClass: "portfolio-item mx-auto",
-              attrs: {
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#portfolioModal5",
-              },
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "portfolio-item-caption-content text-center text-white",
-                    },
-                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: { src: "assets/img/portfolio/safe.png", alt: "..." },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-4" }, [
-          _c(
-            "div",
-            {
-              staticClass: "portfolio-item mx-auto",
-              attrs: {
-                "data-bs-toggle": "modal",
-                "data-bs-target": "#portfolioModal6",
-              },
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "portfolio-item-caption-content text-center text-white",
-                    },
-                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "img-fluid",
-                attrs: {
-                  src: "assets/img/portfolio/submarine.png",
-                  alt: "...",
-                },
-              }),
-            ]
-          ),
-        ]),
-      ]),
+      _c("div", { staticClass: "divider-custom-line" }),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "portfolio-item-caption-content text-center text-white",
+          },
+          [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+        ),
+      ]
+    )
   },
 ]
 render._withStripped = true

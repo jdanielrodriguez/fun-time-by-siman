@@ -12,9 +12,19 @@ class GalleryController extends Controller
     public function index(Request $request)
     {
 
-
+       return"Hola Controlador";
 
         if (!$request->ajax()) return redirect('/');
+       // $galeria = new Galeria();
+
+        $galeria = Galeria::select('id','image')
+        ->orderBy('id', 'desc')->get();
+
+        return ['galeria' => $galeria];
+
+
+
+
     }
 
 
@@ -105,7 +115,7 @@ class GalleryController extends Controller
         $galeria->telefono = $request->telefono;
         $galeria->correo = $request->correo;
         $galeria->participante = $request->participante;
-        $galeria->fechan = $request->fechanacimiento;
+        $galeria->grupo = $request->grupo;
         $galeria->image = $fileName;
         $galeria->video = $fileNameVideo;
         $galeria->estado = '1';
@@ -113,4 +123,22 @@ class GalleryController extends Controller
 
         $galeria->save();
     }
+
+
+
+    public function obtenerVideo(Request $request)
+    {
+
+
+
+        if (!$request->ajax()) return redirect('/');
+        $galeria = new Galeria();
+
+
+
+
+    }
+
+
+
 }

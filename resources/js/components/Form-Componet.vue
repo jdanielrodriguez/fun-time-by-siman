@@ -111,30 +111,33 @@
                             placeholder="Participante"
                             data-sb-validations="required"
                         />
-                        <label for="participante">Participante</label>
+                        <label for="participante">Nombre de hijo o hija</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            El nombre del participante es requerido.
+                            El nombre de hijo o hija es requerido.
                         </div>
                     </div>
-                    <!-- Nombre Participante input-->
+                    <!-- Grupo Select -->
                     <div class="form-floating mb-3">
-                        <input
-                            class="form-control"
-                            id="fechan"
-                            type="date"
-                            v-model="fechaNacimiento"
-                            placeholder="Fecha de Nacimiento"
-                            data-sb-validations="required"
-                        />
-                        <label for="participante">Fecha de Nacimiento</label>
+
+                       <label for="grupo">Seleccione un grupo</label>
+                         <div>
+                            <select class="form-select" aria-label="Default select example"  v-model="grupo" name="" id="" data-sb-validations="required">
+
+                          <option value="0" disabled>Seleccione un grupo</option>
+                            <option value="1">Grupo 1</option>
+                            <option value="2">Grupo 2</option>
+
+                        </select>
+                         </div>
+
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            La fecha de nacimiento es requerida.
+                            El grupo es requerido.
                         </div>
                     </div>
 
@@ -244,7 +247,7 @@ export default {
             telefono: "",
             correo: "",
             participante: "",
-            fechaNacimiento: "",
+            grupo: [""],
             img: null,
             video: null,
 
@@ -257,7 +260,7 @@ export default {
 
     methods: {
         registrar() {
-            console.log("registrar");
+
 
             if (this.validar()) {
                 return;
@@ -273,7 +276,7 @@ export default {
                     correo: this.correo,
                     telefono: this.telefono,
                     participante: this.participante,
-                    fechanacimiento: this.fechaNacimiento,
+                    grupo: this.grupo,
                     img: this.img,
                     video: this.video,
                 })
@@ -333,7 +336,7 @@ export default {
         },
 
         validar() {
-            console.log("validar");
+
 
             this.errorGaleria = 0;
             this.errorMostrarMsjgaleria = [];
@@ -363,10 +366,12 @@ export default {
                     "El Nombre Participante no puede estar vacio."
                 );
             }
-            if (!this.fechaNacimiento) {
+            if (this.grupo[0]=="" || this.grupo[0]==0) {
                 this.errorMostrarMsjgaleria.push(
-                    "La Fecha de Naacimiento no puede estar vacio."
+                    "El Grupo no puede estar Vacio."
                 );
+
+
             }
             if (!this.img) {
                 this.errorMostrarMsjgaleria.push(

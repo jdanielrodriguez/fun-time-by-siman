@@ -9,5 +9,5 @@ class Galeria extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['nombre', 'dpi', 'telefono', 'correo', 'participante', 'fechan', 'image', 'video', 'fecha_hora', 'estado'];
+    protected $fillable = ['nombre', 'dpi', 'telefono', 'correo', 'participante', 'grupo', 'image', 'video', 'fecha_hora', 'estado'];
 }
