@@ -15,9 +15,9 @@
 
         <div
             class="portfolio-modal modal fade"
-            id="portfolioModal2"
+            id="galeriaModal"
             tabindex="-1"
-            aria-labelledby="portfolioModal2"
+            aria-labelledby="galeriaModal"
             aria-hidden="true"
         >
             <div class="modal-dialog modal-xl">
@@ -96,12 +96,13 @@
                     :src="urlImage + galeria.image"
                     alt="..."
                 />
+                <p>{{galeria.nombre}} {{galeria.apellido}}</p>
                 <div class="card-body">
                     <button
                         @click="verVideo(galeria.id)"
                         class="btn btn-primary"
                         data-bs-toggle="modal"
-                        data-bs-target="#portfolioModal2"
+                        data-bs-target="#galeriaModal"
                     >
                         Video
                     </button>

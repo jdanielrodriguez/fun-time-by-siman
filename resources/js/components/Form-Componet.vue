@@ -24,15 +24,15 @@
                             id="nombre"
                             type="text"
                             v-model="nombre"
-                            placeholder="Nombre"
+                            placeholder="Nombre de mamá / papá o tutor legal"
                             data-sb-validations="required"
                         />
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Nombre de mamá / papá o tutor legal</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            El nombre del encargado es Requerido.
+                            El Nombre de mamá / papá o tutor legal es Requerido.
                         </div>
                     </div>
 
@@ -42,15 +42,15 @@
                             id="apellido"
                             type="text"
                             v-model="apellido"
-                            placeholder="Apellido"
+                            placeholder="Apellido de mamá / papá o tutor legal"
                             data-sb-validations="required"
                         />
-                        <label for="apellido">Apellido</label>
+                        <label for="apellido">Apellido de mamá / papá o tutor legal</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            El Apellido del encargado es Requerido.
+                            El Apellido de mamá / papá o tutor legal es Requerido.
                         </div>
                     </div>
                     <!-- DPI input-->
@@ -78,21 +78,21 @@
                             id="corre"
                             type="email"
                             v-model="correo"
-                            placeholder="name@example.com"
+                            placeholder="e-mail"
                             data-sb-validations="required,email"
                         />
-                        <label for="correo">Correo</label>
+                        <label for="correo">e-mail</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="email:required"
                         >
-                            El Correo es required.
+                            El e-mail es required.
                         </div>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="email:email"
                         >
-                            El correo no es Valido.
+                            El e-mail no es Valido.
                         </div>
                     </div>
                     <!-- Telefono input-->
@@ -102,7 +102,7 @@
                             id="telefono"
                             type="text"
                             v-model="telefono"
-                            placeholder="telefono"
+                            placeholder="Teléfono"
                             data-sb-validations="required"
                         />
                         <label for="telefono">Teléfono</label>
@@ -110,7 +110,7 @@
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            El Telefono Requerido.
+                            El Teléfono Requerido.
                         </div>
                     </div>
                     <!-- Nombre Participante input-->
@@ -133,7 +133,7 @@
                     </div>
                     <!-- Grupo Select -->
                     <div class="form-floating mb-3">
-                        <label for="grupo">Seleccione una categoria</label>
+                        <label for="grupo">Categoría</label>
                         <div>
                             <select
                                 class="form-select"
@@ -144,7 +144,7 @@
                                 data-sb-validations="required"
                             >
                                 <option value="0" disabled>
-                                    Seleccione un grupo
+                                    Seleccione una Categoría
                                 </option>
                                 <option value="1">De 4 a 7 años</option>
                                 <option value="2">De 8 a 12 años</option>
