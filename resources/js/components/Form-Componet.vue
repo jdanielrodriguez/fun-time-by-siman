@@ -27,7 +27,9 @@
                             placeholder="Nombre de mamá / papá o tutor legal"
                             data-sb-validations="required"
                         />
-                        <label for="nombre">Nombre de mamá / papá o tutor legal</label>
+                        <label for="nombre"
+                            >Nombre de mamá / papá o tutor legal</label
+                        >
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -45,12 +47,15 @@
                             placeholder="Apellido de mamá / papá o tutor legal"
                             data-sb-validations="required"
                         />
-                        <label for="apellido">Apellido de mamá / papá o tutor legal</label>
+                        <label for="apellido"
+                            >Apellido de mamá / papá o tutor legal</label
+                        >
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            El Apellido de mamá / papá o tutor legal es Requerido.
+                            El Apellido de mamá / papá o tutor legal es
+                            Requerido.
                         </div>
                     </div>
                     <!-- DPI input-->
@@ -225,16 +230,24 @@
                         <div class="text-center text-danger mb-3"></div>
                     </div>
 
-
                     <!-- Nombre Participante input-->
                     <div class="me-auto mb-3">
                         <input
-                            id="teminos"
+                            id="terminos"
                             type="checkbox"
-                            v-model="teminos"
+                            v-model="terminos"
                             data-sb-validations="required"
                         />
-                        <label for="teminos"> Acepto <a href="#terminos" data-bs-toggle="modal" data-bs-target="#terminos" class=""><u>Términos y Condiciones</u></a></label>
+                        <label for="terminos">
+                            Acepto
+                            <a
+                                href="#terminos-modal"
+                                data-bs-toggle="modal"
+                                data-bs-target="#terminos-modal"
+                                class=""
+                                ><u>Términos y Condiciones</u></a
+                            ></label
+                        >
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -263,6 +276,157 @@
                     Enviar
                 </button>
             </div>
+            <div
+                class="portfolio-modal modal fade"
+                id="terminos-modal"
+                tabindex="-1"
+                aria-labelledby="terminos-modal"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-body text-center pb-5">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 mx-auto">
+                                        <h2>
+                                            Términos y Condiciones Funtime
+                                            Casting Siman.
+                                        </h2>
+                                        <h4
+                                            class="text-start text-justify ps-3"
+                                        >
+                                            1. ¿Cómo Participar?
+                                        </h4>
+                                        <p class="text-start text-justify">
+                                            Tendrás que llenar un formulario
+                                            online en www.funtimesiman.com con
+                                            los datos de padres o tutor legal,
+                                            aceptando la cesión de las imágenes
+                                            del casting de niños a SIMAN al
+                                            enviar el formulario, así como las
+                                            fotografías de la pasarela las
+                                            cuales aparecerán posteriormente en
+                                            redes sociales de ser seleccionado
+                                            ganador.
+                                        </p>
+                                        <br />
+                                        <p class="text-start text-justify">
+                                            Subir una foto de buena calidad y un
+                                            video mostrando sus habilidades de
+                                            modelaje. Límite de peso del vídeo:
+                                            5 mb, fotografía 2 mb.
+                                        </p>
+                                        <br />
+                                        <div class="text-start text-justify">
+                                            La niña o niño debe cumplir con las
+                                            edades de las 2 categorías:
+                                            <br />
+                                            <ul>
+                                                <li>De 4 a 7 años.</li>
+                                                <li>De 8 a 12 años.</li>
+                                            </ul>
+                                            Se escogerán 3 niños por categoría.
+                                        </div>
+
+                                        <h4
+                                            class="text-start text-justify ps-3 mt-3"
+                                        >
+                                            2. Premios:
+                                        </h4>
+                                        <div class="text-start text-justify">
+                                            <ul>
+                                                <li>
+                                                    Participar en la pasarela de
+                                                    niños by Siman
+                                                </li>
+                                                <li>
+                                                    Un certificado de regalo de
+                                                    Q1,000.00 para cada ganador,
+                                                    el cual se entregará el día
+                                                    del evento.
+                                                </li>
+                                                <li>
+                                                    Se les obsequiará los
+                                                    outfits que utilizarán en la
+                                                    pasarela.
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <h4
+                                            class="text-start text-justify ps-3 mt-3"
+                                        >
+                                            3. ¿Cómo se anunciarán a los
+                                            ganadores?
+                                        </h4>
+
+                                        <p class="text-start text-justify">
+                                            Los ganadores serán llamados por
+                                            SIMAN para indicarles los detalles
+                                            de la pasarela asi como el dia que
+                                            deben llegar a tallarse la ropa para
+                                            el evento, fecha y horario
+                                            inamovible.
+                                        </p>
+
+                                        <p class="text-start text-justify">
+                                            Durante la pasarela se tomarán
+                                            fotografías de los modelos, las
+                                            cuales se comprometen a ceder todos
+                                            los derechos de uso para fines
+                                            publitarios sin fecha de caducidad.
+                                            Estas imágenes aparecerán,
+                                            posteriormente, en redes sociales y
+                                            en cualquier medio que SIMAN utilice
+                                            para comunicación publicitaria.
+                                        </p>
+
+                                        <h4
+                                            class="text-start text-justify ps-3 mt-3"
+                                        >
+                                            4. Fecha y Horario
+                                        </h4>
+
+                                        <p class="text-start text-justify">
+                                            La Pasarela Fun Time by Siman se
+                                            llevará a cabo el Sábado 28 de mayo
+                                            de 2022 a las 16:30 horas en la
+                                            tienda de Siman Pradera Concepción.
+                                            Esta fecha y hora puede variar con
+                                            previa notificación para coordinar a
+                                            los participantes.
+                                        </p>
+
+                                        <h4
+                                            class="text-start text-justify ps-3 mt-3"
+                                        >
+                                            5. Formulario de inscripción.
+                                        </h4>
+
+                                        <p class="text-start text-justify">
+                                            Al completar los datos y enviar el
+                                            formulario de inscripción, Ud esta
+                                            aceptando los terminos y condiciones
+                                            descritos en este documento.
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8 mx-auto">
+                                        <button
+                                            class="btn btn-primary"
+                                            @click="cerrarModal()"
+                                            data-bs-dismiss="modal"
+                                        >
+                                            <i class="fas fa-xmark fa-fw"></i>
+                                            Cerrar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -276,6 +440,9 @@ export default {
     data() {
         return {
             nombre: "",
+            apellido: "",
+            file: "",
+            terminos: false,
             dpi: "",
             telefono: "",
             correo: "",
@@ -311,6 +478,7 @@ export default {
             axios
                 .post("/galeria/registro", {
                     nombre: this.nombre,
+                    apellido: this.apellido,
                     dpi: this.dpi,
                     correo: this.correo,
                     telefono: this.telefono,
@@ -375,7 +543,12 @@ export default {
 
             if (!this.nombre) {
                 this.errorMostrarMsjgaleria.push(
-                    "El Nombre Encargado no puede estar vacio."
+                    "El Nombre de mamá / papá o tutor legal no puede estar vacio."
+                );
+            }
+            if (!this.apellido) {
+                this.errorMostrarMsjgaleria.push(
+                    "El Apellido de mamá / papá o tutor legal no puede estar vacio."
                 );
             }
             if (!this.dpi) {
@@ -400,7 +573,7 @@ export default {
             }
             if (this.grupo[0] == "" || this.grupo[0] == 0) {
                 this.errorMostrarMsjgaleria.push(
-                    "El Grupo no puede estar Vacio."
+                    "La Categoria no puede estar Vacio."
                 );
             }
             if (!this.img) {
@@ -414,6 +587,11 @@ export default {
                 );
             }
 
+            if (!this.terminos) {
+                this.errorMostrarMsjgaleria.push(
+                    "Debe aceptar los terminos y condiciones."
+                );
+            }
             if (this.errorMostrarMsjgaleria.length) this.errorGaleria = 1;
 
             return this.errorGaleria;
@@ -421,6 +599,8 @@ export default {
 
         cerrarModal() {
             this.nombre = "";
+            this.terminos = false;
+            this.apellido = "";
             this.dpi = "";
             this.telefono = "";
             this.email = "";

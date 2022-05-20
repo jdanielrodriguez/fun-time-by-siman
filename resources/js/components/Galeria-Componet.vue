@@ -27,11 +27,12 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2
+                                    <h3
+                                        v-if="currentName"
                                         class="portfolio-modal-title text-secondary text-uppercase mb-0"
                                     >
-                                        Video
-                                    </h2>
+                                        {{ currentName }}
+                                    </h3>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -42,8 +43,20 @@
                                     </div>
                                     <!-- Portfolio Modal - Image-->
                                     <div
+                                        class="image-container"
+                                        v-if="currentImage"
+                                    >
+                                        <img
+                                            class="img-fluid item"
+                                            :src="urlImage + currentImage"
+                                            alt="..."
+                                        />
+                                    </div>
+
+                                    <div
                                         v-for="video in arrayVideo"
                                         :key="video.id"
+                                        class="video-container"
                                     >
                                         <video id="video" width="100%" controls>
                                             <source
@@ -70,36 +83,23 @@
                 </div>
             </div>
         </div>
-
-        <!-- Portfolio Grid Items-->
-        <div
-            v-for="galeria in arrayGaleria"
-            :key="galeria.id"
-            class="row justify-content-center"
-        >
-            <!-- Portfolio Item 1-->
-            <!--
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#1">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" :src="urlImage+galeria.image" alt="..." />
-                    </div>
+        <div class="container row justify-content-center">
+            <div
+                class="card col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-5 me-3"
+                v-for="galeria in arrayGaleria"
+                :key="galeria.id"
+            >
+                <div class="image-container">
+                    <img
+                        class="img-fluid item"
+                        :src="urlImage + galeria.image"
+                        alt="..."
+                    />
                 </div>
-            -->
-            <div class="card" style="width: 18rem">
-                <img
-                    class="img-fluid"
-                    :src="urlImage + galeria.image"
-                    alt="..."
-                />
-                <p>{{galeria.nombre}} {{galeria.apellido}}</p>
+                <p>{{ galeria.participante }}</p>
                 <div class="card-body">
                     <button
-                        @click="verVideo(galeria.id)"
+                        @click="verVideo(galeria)"
                         class="btn btn-primary"
                         data-bs-toggle="modal"
                         data-bs-target="#galeriaModal"
@@ -109,6 +109,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Portfolio Grid Items-->
     </div>
 </template>
 
@@ -117,6 +119,8 @@ export default {
     data() {
         return {
             urlImage: "img/",
+            currentImage: "",
+            currentName: "",
             urlVideo: "video/",
             arrayGaleria: [],
             mostrar: 0,
@@ -150,8 +154,6 @@ export default {
             axios
                 .get(url)
                 .then(function (response) {
-                    //console.log(response.data);
-
                     var respuesta = response.data;
                     me.arrayGaleria = respuesta.galeria;
                 })
@@ -163,14 +165,14 @@ export default {
         verVideo(galeria) {
             let me = this;
 
-            var url = "/gallery/video?galeria=" + galeria;
+            var url = "/gallery/video?galeria=" + galeria.id;
             axios
                 .get(url)
                 .then(function (response) {
-                    console.log(response.data);
-
                     var respuesta = response.data;
                     me.arrayVideo = respuesta.video;
+                    me.currentImage = galeria.image;
+                    me.currentName = galeria.participante;
                 })
                 .catch(function (error) {
                     console.log(error);
