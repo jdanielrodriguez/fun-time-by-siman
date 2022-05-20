@@ -1,17 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container" id="formulario">
         <!-- Contact Section Heading-->
-        <h2
-            class="page-section-heading text-center text-uppercase text-secondary mb-0"
+        <h5
+            class="page-section-heading text-center text-uppercase text-primary mb-3"
         >
-            Registrate
-        </h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
+            Formulario de Inscripción
+        </h5>
         <!-- Contact Section Form-->
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7">
@@ -69,7 +63,7 @@
                             placeholder="telefono"
                             data-sb-validations="required"
                         />
-                        <label for="telefono">Telefono</label>
+                        <label for="telefono">Teléfono</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -223,13 +217,16 @@
                 </div>
             </div>
             <!-- Submit Button-->
+            <div class="w-100">
             <button
-                class="btn btn-primary btn-xl"
+                class="btn btn-primary btn-md w-25 shadow mt-3"
                 id="submitButton"
                 @click="registrar()"
             >
                 Enviar
             </button>
+            </div>
+
         </div>
     </div>
 </template>

@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Fun Time Casting | Siman</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/image/logo-siman.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -17,18 +16,15 @@
         type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
-<body page-top>
+<body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top"> <img class="masthead-avatar" src="asset/image/logo.png" /></a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                Menu
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -38,9 +34,9 @@
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                             href="#instrucciones">Instrucciones</a></li>
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#about">About</a></li>
+                            href="#formulario">Formulario</a></li>
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#contact">Contact</a></li>
+                            href="#galeria">Galeria</a></li>
                 </ul>
             </div>
         </div>
@@ -53,74 +49,19 @@
             </div>
         </div>
     </header>
-    <section class="page-section  text-white mb-0" id="instrucciones">
+    <section class="page-section text-white mb-0" id="instrucciones">
         <div class="lista">
             <img src="asset/image/lista.png" alt="">
         </div>
     </section>
-    <!-- Contact Section-->
-    <section class="page-section" id="contact">
-
+    <section class="page-section form-content" >
         <div id="app">
             <form-component></form-component>
-
-
-            <section class="page-section portfolio" id="portfolio">
-
-
+            <section class="page-section portfolio" id="galeria">
                 <galeria-component></galeria-component>
-
-
-
             </section>
-
         </div>
-
-
     </section>
-
-
-
-    <!-- Footer-->
-    <footer class="footer text-center">
-        <div class="container">
-            <div class="row">
-                <!-- Footer Location-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Location</h4>
-                    <p class="lead mb-0">
-                        2215 John Daniel Drive
-                        <br />
-                        Clark, MO 65243
-                    </p>
-                </div>
-                <!-- Footer Social Icons-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Around the Web</h4>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                            class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                            class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                </div>
-                <!-- Footer About Text-->
-                <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                    <p class="lead mb-0">
-                        Freelance is a free to use, MIT licensed Bootstrap theme created by
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                        .
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
-    </div>
-    <!-- Portfolio Modals-->
     <!-- Portfolio Modal 1-->
 
     <!-- Portfolio Modal 2-->
@@ -323,6 +264,6 @@
 </body>
 
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/scripts.js') }}"></script>
 
 </html>
