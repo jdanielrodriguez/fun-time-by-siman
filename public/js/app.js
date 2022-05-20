@@ -5495,6 +5495,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {},
@@ -5521,11 +5527,6 @@ __webpack_require__.r(__webpack_exports__);
       if (this.validar()) {
         return;
       }
-      /*
-          'img' : this.img,
-              'video' : this.video
-         */
-
 
       var me = this;
       axios.post("/galeria/registro", {
@@ -5549,22 +5550,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
-      /*
-                 fetch('/galeria/registro', {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'url': '/payment',
-      "X-CSRF-Token": document.querySelector('input[name=_token]').value
-      },
-      body: {
-      }
-      })
-      .then((res => res.json())
-      .then((res) => console.log)
-      )
-           */
     },
     testing: function testing() {
       this.nombre = document.getElementById("nombre").value;
@@ -5586,26 +5571,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.img = e.target.result;
       };
     },
-    previewVideo: function previewVideo() {
-      /*
-      let video = document.getElementById('video-preview');
-      let reader = new FileReader();
-      reader.readAsDataURL( video );
-      reader.onload = function(){
-      alert(reader.result);
-      }
-      reader.addEventListener('load', function(){
-      video.src = reader.result;
-      });
-      */
-    },
     getVideo: function getVideo() {
       var _this2 = this;
 
-      /*
-      this.file = event.target.files[0];
-      this.previewVideo();
-      */
       var input = document.getElementById("video");
       var video = input.files[0];
       this.video = video;
@@ -5616,16 +5584,6 @@ __webpack_require__.r(__webpack_exports__);
         _this2.video = input.target.result;
         document.getElementById("video-preview").src = freader.result; // alert(this.video);
       };
-      /*
-      var freader = new FileReader();
-      freader.readAsDataURL(input.files[0]);
-      freader.onload=function(){
-      // alert(freader.result);
-      this.video = freader.result;
-      document.getElementById('video-preview').src=freader.result;
-      }
-      */
-
     },
     validar: function validar() {
       console.log("validar");
@@ -5702,6 +5660,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
@@ -5724,166 +5767,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    registrar: function registrar() {
-      /*
-          if (this.validar()){
-              return;
-          }
-          'img' : this.img,
-              'video' : this.video
-      */
-      var me = this;
-      axios.post("/galeria/registro", {
-        nombre: this.nombre,
-        dpi: this.dpi,
-        correo: this.correo,
-        telefono: this.telefono,
-        participante: this.participante,
-        fechanacimiento: this.fechaNacimiento
-      }).then(function (response) {
-        console.log(response);
-        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
-          position: "top",
-          icon: "success",
-          title: "Datos Agregados Con Exito!",
-          showConfirmButton: false,
-          timer: 1500
-        }); // window.location.reload();
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      /*
-                 fetch('/galeria/registro', {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'url': '/payment',
-      "X-CSRF-Token": document.querySelector('input[name=_token]').value
-      },
-      body: {
-      }
-      })
-      .then((res => res.json())
-      .then((res) => console.log)
-      )
-           */
-    },
-    testing: function testing() {
-      this.nombre = document.getElementById("nombre").value;
-      this.dpi = document.getElementById("dpi").value;
-      this.telefono = document.getElementById("telefono").value;
-      this.email = document.getElementById("email").value;
-      this.participante = document.getElementById("participante").value;
-      console.log(this.video);
-    },
-    getImage: function getImage(e) {
-      var _this = this;
-
-      var image = e.target.files[0];
-      this.img = image;
-      var reader = new FileReader();
-      reader.readAsDataURL(image);
-
-      reader.onload = function (e) {
-        _this.img = e.target.result;
-      };
-    },
-    previewVideo: function previewVideo() {
-      /*
-      let video = document.getElementById('video-preview');
-      let reader = new FileReader();
-      reader.readAsDataURL( video );
-      reader.onload = function(){
-      alert(reader.result);
-      }
-      reader.addEventListener('load', function(){
-      video.src = reader.result;
-      });
-      */
-    },
-    getVideo: function getVideo() {
-      var _this2 = this;
-
-      /*
-      this.file = event.target.files[0];
-      this.previewVideo();
-      */
-      var input = document.getElementById("video");
-      var video = input.files[0];
-      this.video = video;
-      var freader = new FileReader();
-      freader.readAsDataURL(video);
-
-      freader.onload = function (input) {
-        _this2.video = input.target.result;
-        document.getElementById("video-preview").src = freader.result; // alert(this.video);
-      };
-      /*
-      var freader = new FileReader();
-      freader.readAsDataURL(input.files[0]);
-      freader.onload=function(){
-      // alert(freader.result);
-      this.video = freader.result;
-      document.getElementById('video-preview').src=freader.result;
-      }
-      */
-
-    },
-    validar: function validar() {
-      this.errorGaleria = 0;
-      this.errorMostrarMsjgaleria = [];
-
-      if (!this.nombre) {
-        this.errorMostrarMsjgaleria.push("El Nombre Encargado no puede estar vacio.");
-      }
-
-      if (!this.dpi) {
-        this.errorMostrarMsjgaleria.push("El DPI no puede estar vacio.");
-      }
-
-      if (!this.telefono) {
-        this.errorMostrarMsjgaleria.push("El Telefono no puede estar vacio.");
-      }
-
-      if (!this.correo) {
-        this.errorMostrarMsjgaleria.push("El Correo no puede estar vacio.");
-      }
-
-      if (!this.participante) {
-        this.errorMostrarMsjgaleria.push("El Nombre Participante no puede estar vacio.");
-      }
-
-      if (!this.fechaNacimiento) {
-        this.errorMostrarMsjgaleria.push("La Fecha de Naacimiento no puede estar vacio.");
-      }
-
-      if (!this.img) {
-        this.errorMostrarMsjgaleria.push("La imagen no puede estar vacio.");
-      }
-
-      if (!this.video) {
-        this.errorMostrarMsjgaleria.push("El Video no puede estar vacio.");
-      }
-
-      if (this.errorMostrarMsjgaleria.length) this.errorGaleria = 1;
-      return this.errorGaleria;
-    },
-    cerrarModal: function cerrarModal() {
-      this.nombre = "";
-      this.dpi = "";
-      this.telefono = "";
-      this.email = "";
-      this.participante = "";
-      this.fechaNacimiento = "";
-      this.deshabilitar_boton = 0;
-      this.errorGaleria = 0;
-      this.image = "";
-      this.video = "";
-      this.errorMostrarMsjgaleria = "";
-      document.getElementById("video-preview").value = "";
-      document.getElementById("image-preview").value = "";
-    }
+    listar: function listar() {}
   }
 });
 
@@ -32202,13 +32086,15 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c(
-      "h5",
+      "h2",
       {
         staticClass:
           "page-section-heading text-center text-uppercase text-secondary mb-0",
       },
-      [_vm._v("\n        Formulario de Inscripcion\n    ")]
+      [_vm._v("\n        Registrate\n    ")]
     ),
+    _vm._v(" "),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-lg-8 col-xl-7" }, [
@@ -32579,9 +32465,9 @@ var render = function () {
               attrs: { autoplay: "", id: "video-preview", controls: "" },
             }),
             _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
             _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
           ]
         ),
       ]),
@@ -32631,6 +32517,20 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "divider-custom" }, [
+      _c("div", { staticClass: "divider-custom-line" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-custom-icon" }, [
+        _c("i", { staticClass: "fas fa-star" }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-custom-line" }),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -32696,9 +32596,262 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container", attrs: { id: "fondo2" } }, [
+      _c(
+        "h2",
+        {
+          staticClass:
+            "page-section-heading text-center text-uppercase text-secondary mb-0",
+        },
+        [_vm._v("Portfolio")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider-custom" }, [
+        _c("div", { staticClass: "divider-custom-line" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "divider-custom-icon" }, [
+          _c("i", { staticClass: "fas fa-star" }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "divider-custom-line" }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
+          _c(
+            "div",
+            {
+              staticClass: "portfolio-item mx-auto",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#portfolioModal1",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "portfolio-item-caption-content text-center text-white",
+                    },
+                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "assets/img/portfolio/cabin.png", alt: "..." },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
+          _c(
+            "div",
+            {
+              staticClass: "portfolio-item mx-auto",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#portfolioModal2",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "portfolio-item-caption-content text-center text-white",
+                    },
+                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "assets/img/portfolio/cake.png", alt: "..." },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5" }, [
+          _c(
+            "div",
+            {
+              staticClass: "portfolio-item mx-auto",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#portfolioModal3",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "portfolio-item-caption-content text-center text-white",
+                    },
+                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "assets/img/portfolio/circus.png", alt: "..." },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5 mb-lg-0" }, [
+          _c(
+            "div",
+            {
+              staticClass: "portfolio-item mx-auto",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#portfolioModal4",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "portfolio-item-caption-content text-center text-white",
+                    },
+                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "assets/img/portfolio/game.png", alt: "..." },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-4 mb-5 mb-md-0" }, [
+          _c(
+            "div",
+            {
+              staticClass: "portfolio-item mx-auto",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#portfolioModal5",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "portfolio-item-caption-content text-center text-white",
+                    },
+                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "assets/img/portfolio/safe.png", alt: "..." },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-4" }, [
+          _c(
+            "div",
+            {
+              staticClass: "portfolio-item mx-auto",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#portfolioModal6",
+              },
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100",
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "portfolio-item-caption-content text-center text-white",
+                    },
+                    [_c("i", { staticClass: "fas fa-plus fa-3x" })]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: {
+                  src: "assets/img/portfolio/submarine.png",
+                  alt: "...",
+                },
+              }),
+            ]
+          ),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -44869,7 +45022,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\wamp64\\\\www\\\\server\\\\gallery","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

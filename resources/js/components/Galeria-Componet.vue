@@ -1,4 +1,89 @@
-<template></template>
+<template>
+
+<div id="fondo2" class="container">
+
+
+
+            <!-- Portfolio Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div class="row justify-content-center">
+                <!-- Portfolio Item 1-->
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
+                    </div>
+                </div>
+                <!-- Portfolio Item 2-->
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." />
+                    </div>
+                </div>
+                <!-- Portfolio Item 3-->
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
+                    </div>
+                </div>
+                <!-- Portfolio Item 4-->
+                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
+                    </div>
+                </div>
+                <!-- Portfolio Item 5-->
+                <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="..." />
+                    </div>
+                </div>
+                <!-- Portfolio Item 6-->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
+                        <div
+                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i
+                                    class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="..." />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</template>
 
 <script>
 import Swal from "sweetalert2";
@@ -26,190 +111,11 @@ export default {
     },
 
     methods: {
-        registrar() {
-            /*
-                if (this.validar()){
-                    return;
-                }
-                'img' : this.img,
-                    'video' : this.video
-*/
-            let me = this;
+        listar() {
 
-            axios
-                .post("/galeria/registro", {
-                    nombre: this.nombre,
-                    dpi: this.dpi,
-                    correo: this.correo,
-                    telefono: this.telefono,
-                    participante: this.participante,
-                    fechanacimiento: this.fechaNacimiento,
-                })
-                .then(function (response) {
-                    console.log(response);
-
-                    Swal.fire({
-                        position: "top",
-                        icon: "success",
-                        title: "Datos Agregados Con Exito!",
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    // window.location.reload();
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
-            /*
-                       fetch('/galeria/registro', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'url': '/payment',
-        "X-CSRF-Token": document.querySelector('input[name=_token]').value
-    },
-    body: {
-
-    }
-
-})
- .then((res => res.json())
-  .then((res) => console.log)
- )
-
-                */
         },
 
-        testing() {
-            this.nombre = document.getElementById("nombre").value;
-            this.dpi = document.getElementById("dpi").value;
-            this.telefono = document.getElementById("telefono").value;
-            this.email = document.getElementById("email").value;
-            this.participante = document.getElementById("participante").value;
 
-            console.log(this.video);
-        },
-
-        getImage(e) {
-            let image = e.target.files[0];
-            this.img = image;
-            let reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = (e) => {
-                this.img = e.target.result;
-            };
-        },
-
-        previewVideo() {
-            /*
-    let video = document.getElementById('video-preview');
-    let reader = new FileReader();
-    reader.readAsDataURL( video );
-    reader.onload = function(){
-      alert(reader.result);
-    }
-    reader.addEventListener('load', function(){
-        video.src = reader.result;
-
-    });
-    */
-        },
-
-        getVideo() {
-            /*
-      this.file = event.target.files[0];
-    this.previewVideo();
-    */
-
-            let input = document.getElementById("video");
-            let video = input.files[0];
-            this.video = video;
-            var freader = new FileReader();
-            freader.readAsDataURL(video);
-            freader.onload = (input) => {
-                this.video = input.target.result;
-                document.getElementById("video-preview").src = freader.result;
-                // alert(this.video);
-            };
-            /*
-   var freader = new FileReader();
-   freader.readAsDataURL(input.files[0]);
-   freader.onload=function(){
-    // alert(freader.result);
-     this.video = freader.result;
-    document.getElementById('video-preview').src=freader.result;
-      }
-*/
-        },
-
-        validar() {
-            this.errorGaleria = 0;
-            this.errorMostrarMsjgaleria = [];
-
-            if (!this.nombre) {
-                this.errorMostrarMsjgaleria.push(
-                    "El Nombre Encargado no puede estar vacio."
-                );
-            }
-            if (!this.dpi) {
-                this.errorMostrarMsjgaleria.push(
-                    "El DPI no puede estar vacio."
-                );
-            }
-            if (!this.telefono) {
-                this.errorMostrarMsjgaleria.push(
-                    "El Telefono no puede estar vacio."
-                );
-            }
-            if (!this.correo) {
-                this.errorMostrarMsjgaleria.push(
-                    "El Correo no puede estar vacio."
-                );
-            }
-            if (!this.participante) {
-                this.errorMostrarMsjgaleria.push(
-                    "El Nombre Participante no puede estar vacio."
-                );
-            }
-            if (!this.fechaNacimiento) {
-                this.errorMostrarMsjgaleria.push(
-                    "La Fecha de Naacimiento no puede estar vacio."
-                );
-            }
-            if (!this.img) {
-                this.errorMostrarMsjgaleria.push(
-                    "La imagen no puede estar vacio."
-                );
-            }
-            if (!this.video) {
-                this.errorMostrarMsjgaleria.push(
-                    "El Video no puede estar vacio."
-                );
-            }
-
-            if (this.errorMostrarMsjgaleria.length) this.errorGaleria = 1;
-
-            return this.errorGaleria;
-        },
-
-        cerrarModal() {
-            this.nombre = "";
-            this.dpi = "";
-            this.telefono = "";
-            this.email = "";
-            this.participante = "";
-            this.fechaNacimiento = "";
-            this.deshabilitar_boton = 0;
-            this.errorGaleria = 0;
-            this.image = "";
-            this.video = "";
-            this.errorMostrarMsjgaleria = "";
-
-            document.getElementById("video-preview").value = "";
-            document.getElementById("image-preview").value = "";
-        },
     },
 };
 </script>

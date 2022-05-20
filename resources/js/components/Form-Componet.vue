@@ -1,11 +1,17 @@
 <template>
     <div class="container">
         <!-- Contact Section Heading-->
-        <h5
+        <h2
             class="page-section-heading text-center text-uppercase text-secondary mb-0"
         >
-            Formulario de Inscripcion
-        </h5>
+            Registrate
+        </h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
         <!-- Contact Section Form-->
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7">
@@ -257,10 +263,7 @@ export default {
                 return;
             }
 
-            /*
-                'img' : this.img,
-                    'video' : this.video
-               */
+
             let me = this;
 
             axios
@@ -288,25 +291,7 @@ export default {
                     console.log(error);
                 });
 
-            /*
-                       fetch('/galeria/registro', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'url': '/payment',
-        "X-CSRF-Token": document.querySelector('input[name=_token]').value
-    },
-    body: {
 
-    }
-
-})
- .then((res => res.json())
-  .then((res) => console.log)
- )
-
-                */
         },
 
         testing() {
@@ -329,26 +314,10 @@ export default {
             };
         },
 
-        previewVideo() {
-            /*
-    let video = document.getElementById('video-preview');
-    let reader = new FileReader();
-    reader.readAsDataURL( video );
-    reader.onload = function(){
-      alert(reader.result);
-    }
-    reader.addEventListener('load', function(){
-        video.src = reader.result;
 
-    });
-    */
-        },
 
         getVideo() {
-            /*
-      this.file = event.target.files[0];
-    this.previewVideo();
-    */
+
 
             let input = document.getElementById("video");
             let video = input.files[0];
@@ -360,15 +329,7 @@ export default {
                 document.getElementById("video-preview").src = freader.result;
                 // alert(this.video);
             };
-            /*
-   var freader = new FileReader();
-   freader.readAsDataURL(input.files[0]);
-   freader.onload=function(){
-    // alert(freader.result);
-     this.video = freader.result;
-    document.getElementById('video-preview').src=freader.result;
-      }
-*/
+
         },
 
         validar() {
