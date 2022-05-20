@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2022 a las 05:44:36
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 7.4.27
+-- Servidor: localhost:3306
+-- Tiempo de generación: 20-05-2022 a las 11:26:14
+-- Versión del servidor: 5.7.23-23
+-- Versión de PHP: 7.3.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,19 +19,49 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `galeria`
+-- Base de datos: `theaudie_funtimesiman`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `galerias`
+--
+
+CREATE TABLE `galerias` (
+  `id` int(11) NOT NULL,
+  `fecha_hora` datetime NOT NULL,
+  `nombre` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `apellido` varchar(250) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `dpi` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `correo` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `telefono` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `participante` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `grupo` int(11) NOT NULL,
+  `image` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `video` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Volcado de datos para la tabla `galerias`
+-- Indices de la tabla `galerias`
+--
+ALTER TABLE `galerias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
-INSERT INTO `galerias` (`id`, `nombre`, `dpi`, `telefono`, `correo`, `participante`, `fechan`, `image`, `video`, `fecha_hora`, `estado`) VALUES
-(1, 'fdsfds', 'hhjhh', 'kjhkjhkj', 'hhkjhkjh', 'hjkhkjhkj', '2022-05-05', '', '', '2022-05-19 06:00:52', 1),
-(2, '111', '222', '333', '444', '555', '2022-05-05', '', '', '2022-05-19 06:01:42', 1),
-(3, 'Prueba', '4178', '6582', 'hola@hola.com', 'Prueba22', '2022-05-05', 'Prueba22090929.jpeg', 'Hola', '2022-05-19 09:09:29', 1),
-(4, 'Prueba2', '41782', '6582', 'hola@hola.com', 'Prueba23', '2022-05-05', 'Prueba23091635.jpeg', 'Prueba23091635.mp4', '2022-05-19 09:16:35', 1),
-(5, 'prueba5', '5555', '74123', 'hola@hola.com', 'prueba5', '2022-05-05', 'prueba5092855.jpeg', 'prueba5092855.mp4', '2022-05-19 09:28:55', 1);
+--
+-- AUTO_INCREMENT de la tabla `galerias`
+--
+ALTER TABLE `galerias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,4 +1,5 @@
 /node_modules
+/public/video
 /public/hot
 /public/storage
 /storage/*.key
