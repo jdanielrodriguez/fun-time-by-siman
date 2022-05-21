@@ -138,24 +138,20 @@
                     </div>
                     <!-- Grupo Select -->
                     <div class="form-floating mb-3">
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            v-model="grupo"
+                            id="grupo"
+                            data-sb-validations="required"
+                        >
+                            <option value="0" disabled>
+                                Seleccione una Categoría
+                            </option>
+                            <option value="1">De 4 a 7 años</option>
+                            <option value="2">De 8 a 12 años</option>
+                        </select>
                         <label for="grupo">Categoría</label>
-                        <div>
-                            <select
-                                class="form-select"
-                                aria-label="Default select example"
-                                v-model="grupo"
-                                name=""
-                                id=""
-                                data-sb-validations="required"
-                            >
-                                <option value="0" disabled>
-                                    Seleccione una Categoría
-                                </option>
-                                <option value="1">De 4 a 7 años</option>
-                                <option value="2">De 8 a 12 años</option>
-                            </select>
-                        </div>
-
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
@@ -181,9 +177,9 @@
                             La imagen es requerida.
                         </div>
                     </div>
-
-                    <img :src="img" alt="" style="width: 100%" />
-
+                    <div class="image-container" v-if="img">
+                        <img class="img-fluid item" :src="img" alt="..." />
+                    </div>
                     <!-- Video input-->
                     <div class="form-floating mb-3">
                         <input
@@ -202,13 +198,15 @@
                         </div>
                     </div>
                     <div v-show="mostrar">
-                        <video
-                            autoplay
-                            id="video-preview"
-                            style="width: 100%"
-                            controls
-                            v-show="file != ''"
-                        />
+                        <div class="video-container">
+                            <video
+                                autoplay
+                                id="video-preview"
+                                style="width: 100%"
+                                controls
+                                v-show="file != ''"
+                            />
+                        </div>
                     </div>
 
                     <!-- Submit success message-->
@@ -231,7 +229,7 @@
                     </div>
 
                     <!-- Nombre Participante input-->
-                    <div class="me-auto mb-3">
+                    <div class="me-auto mb-3 terminos">
                         <input
                             id="terminos"
                             type="checkbox"
@@ -263,14 +261,15 @@
                         v-for="error in errorMostrarMsjgaleria"
                         :key="error"
                         v-text="error"
+                        class="errorInput"
                     ></div>
                 </div>
             </div>
             <!-- Submit Button-->
             <div class="w-100">
                 <button
-                    class="btn btn-primary btn-md w-25 shadow mt-3"
                     id="submitButton"
+                    class="btn btn-primary btn-md w-25 shadow mt-3"
                     @click="registrar()"
                 >
                     Enviar
@@ -466,8 +465,8 @@ export default {
             }
 
             Swal.fire({
-                title: "Checking...",
-                text: "Please wait",
+                title: "Guardando...",
+                text: "Por favor espere",
                 imageUrl: "img/loading.gif",
                 showConfirmButton: false,
                 allowOutsideClick: false,

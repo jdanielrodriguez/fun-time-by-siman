@@ -85,7 +85,7 @@
         </div>
         <div class="container row justify-content-center">
             <div
-                class="card col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-5 me-3"
+                class="card col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-5 me-3-gl"
                 v-for="galeria in arrayGaleria"
                 :key="galeria.id"
             >
@@ -141,8 +141,8 @@ export default {
                 console.log(a);
 
                    swal.fire({
-              title: "Checking...",
-              text: "Please wait",
+              title: "Obteniendo Datos",
+              text: "Por favor espere",
               imageUrl: "img/loading.gif",
               showConfirmButton: false,
               allowOutsideClick: false

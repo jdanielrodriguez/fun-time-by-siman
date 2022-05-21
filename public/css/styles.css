@@ -2278,10 +2278,8 @@ progress {
 
 .form-control:focus {
     color: #212529;
-    background-color: #fff;
     border-color: #8ddece;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(26, 188, 156, 0.25);
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -2502,7 +2500,7 @@ textarea.form-control-lg {
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
-    background-color: #fff;
+    background-color: inherit;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
@@ -2582,8 +2580,6 @@ textarea.form-control-lg {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    -webkit-print-color-adjust: exact;
-    color-adjust: exact;
 }
 
 .form-check-input[type=checkbox] {
@@ -2788,7 +2784,7 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control,
-.form-floating>.form-select {
+.form-floating>div>.form-select {
     height: 3.5rem;
     line-height: 1.25;
 }
@@ -2841,9 +2837,9 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control:focus, .form-floating>.form-control:not(:placeholder-shown) {
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    height: 75px;
+    height: 50px;
     font-size: 16px;
 }
 
@@ -2852,7 +2848,7 @@ textarea.form-control-lg {
     padding-bottom: 1.5rem;
 }
 
-.form-floating>.form-select {
+.form-floating>div>.form-select {
     padding-top: 2.5rem;
     padding-bottom: 1.5rem;
 }
@@ -2869,7 +2865,7 @@ textarea.form-control-lg {
 
 .form-floating>.form-control:focus~label,
 .form-floating>.form-control:not(:placeholder-shown)~label,
-.form-floating>.form-select~label {
+.form-floating>div>.form-select:focus~label {
     opacity: 0.65;
     transform: scale(0.65) translateY(-0.5rem) translateX(0rem);
 }
@@ -2877,6 +2873,15 @@ textarea.form-control-lg {
 .form-floating>.form-control:-webkit-autofill~label {
     opacity: 0.65;
     transform: scale(0.65) translateY(-0.5rem) translateX(0rem);
+}
+
+.form-floating>.form-select:not(:placeholder-shown)~label {
+    top: -20px;
+    background: #fff;
+    padding-top: 0px!important;
+    font-size: 12px;
+    padding-left: 0px!important;
+    height: 70%;
 }
 
 .input-group {
@@ -6014,9 +6019,9 @@ textarea.form-control-lg {
 
 .modal {
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
-    z-index: 1055;
+    z-index: 999999;
     display: none;
     width: 100%;
     height: 100%;
@@ -12099,10 +12104,7 @@ html {
 .form-floating input.form-control,
 .form-floating textarea.form-control {
     font-size: 1.5rem;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-radius: 0;
+    border-radius: 5px;
     border-width: 1px;
     color: var(--bs-primary) !important;
     background-color: #fff7fc !important;
@@ -12313,7 +12315,6 @@ section {
 .form-control:active, .form-control:focus {
     outline: none;
     box-shadow: none;
-    border-color: var(--color-black);
 }
 
 .btn:active, .btn:focus {
@@ -12538,7 +12539,7 @@ section {
 @media (max-width: 1279px) {
     .navbar {
         padding: 0;
-        z-index: 9997;
+        z-index: 997;
     }
 
     .navbar ul {
@@ -13535,7 +13536,9 @@ section {
 
 .image-container>img {
     max-width: 100%;
-    height: auto;
+    max-height: 200px;
+    height: 100%;
+    width: auto;
     margin: auto;
 }
 
@@ -13548,25 +13551,28 @@ section {
 .image-container {
     width: 200px;
     min-height: 120px;
-    max-height: auto;
+    max-height: 200px;
     display: flex;
     padding: 3px;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    object-fit: contain;
 }
 
 .video-container {
-    width: 500px;
+    width: 300px;
     min-height: 300px;
-    max-height: auto;
+    max-height: 500px;
     display: flex;
     padding: 3px;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
 }
-
+.me-3-gl {
+    margin-left: 1rem;
+}
 @media (max-width: 400px) {
     #inicio, .fondo1 {
         height: auto;
@@ -13604,6 +13610,12 @@ section {
         line-height: 2rem;
     }
 
+    .form-content {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        height: auto;
+    }
+
     #inicio img {
         max-width: 100%;
         width: auto;
@@ -13620,5 +13632,27 @@ section {
         max-width: 80%;
         width: auto;
         height: auto;
+    }
+
+    #inicio {
+        padding-bottom: 0px !important;
+        height: auto;
+    }
+
+    #instrucciones {
+        height: auto;
+    }
+    .terminos{
+        font-size: 14px;
+    }
+    #terminos-modal{
+        z-index: 999999;
+        font-size: 16px;
+    }
+    .errorInput{
+        font-size: 16px;
+    }
+    .me-3-gl{
+        margin-left: 0px;
     }
 }

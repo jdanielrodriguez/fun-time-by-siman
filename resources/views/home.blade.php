@@ -28,6 +28,15 @@
         gtag('js', new Date());
 
         gtag('config', 'G-8SZ8VK3QHT');
+
+        function toggleModal() {
+            const navBar = document.getElementById('navbarResponsive');
+            if (navBar.classList.contains('show')) {
+                navBar.classList.remove('show')
+            } else {
+                navBar.classList.add('show')
+            }
+        }
     </script>
 </head>
 
@@ -36,20 +45,21 @@
     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top"> <img class="masthead-avatar" src="asset/image/logo.png" /></a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button">
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+                onClick="toggleModal()" type="button">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
+                <div class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#inicio">Inicio</a></li>
+                            onClick="toggleModal()" href="#inicio">Inicio</a></li>
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#instrucciones">Instrucciones</a></li>
+                            onClick="toggleModal()" href="#instrucciones">Instrucciones</a></li>
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#formulario">Formulario</a></li>
+                            onClick="toggleModal()" href="#formulario">Formulario</a></li>
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#galeria">Galeria</a></li>
-                </ul>
+                            onClick="toggleModal()" href="#galeria">Galeria</a></li>
+                </div>
             </div>
         </div>
     </nav>
@@ -85,7 +95,6 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
 
 </body>
 
