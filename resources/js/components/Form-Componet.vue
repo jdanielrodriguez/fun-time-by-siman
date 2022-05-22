@@ -61,7 +61,7 @@
                     <!-- DPI input-->
                     <div class="form-floating mb-3">
                         <input
-                        @blur="duplicado()"
+                            @blur="duplicado()"
                             class="form-control"
                             id="dpi"
                             type="text"
@@ -77,13 +77,15 @@
                             El DPI es Requerido.
                         </div>
                         <div v-show="validateDPI" class="text-center">
-                          <p class="text-center text-danger mb-3">El DPI ya esta Registrado!</p>
+                            <p class="text-center text-danger mb-3">
+                                El DPI ya esta Registrado!
+                            </p>
                         </div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
                         <input
-                        @blur="validarCorreo()"
+                            @blur="validarCorreo()"
                             class="form-control"
                             id="correo"
                             type="email"
@@ -105,7 +107,9 @@
                             El e-mail no es Valido.
                         </div>
                         <div v-show="validateCorreo" class="text-center">
-                          <p class="text-center text-danger mb-3">Ingrese un email Correcto!</p>
+                            <p class="text-center text-danger mb-3">
+                                Ingrese un email Correcto!
+                            </p>
                         </div>
                     </div>
                     <!-- Telefono input-->
@@ -186,7 +190,9 @@
                             La imagen es requerida.
                         </div>
                         <div v-show="validateImage" class="text-center">
-                          <p class="text-center text-danger mb-3">El archivo no es una imagen!</p>
+                            <p class="text-center text-danger mb-3">
+                                El archivo no es una imagen!
+                            </p>
                         </div>
                     </div>
                     <div class="image-container" v-if="img">
@@ -210,10 +216,12 @@
                             El video requerida.
                         </div>
                         <div v-show="validateVideo" class="text-center">
-                          <p class="text-center text-danger mb-3">El archivo no es un video!</p>
+                            <p class="text-center text-danger mb-3">
+                                El archivo no es un video!
+                            </p>
                         </div>
                     </div>
-                    <div >
+                    <div class="view">
                         <div class="video-container">
                             <video
                                 autoplay
@@ -286,7 +294,7 @@
             <!-- Submit Button-->
             <div class="w-100">
                 <button
-                    :disabled = "deshabilitar_boton==1"
+                    :disabled="deshabilitar_boton == 1"
                     id="submitButton"
                     class="btn btn-primary btn-md w-25 shadow mt-3"
                     @click="registrar"
@@ -328,14 +336,12 @@
                                             redes sociales de ser seleccionado
                                             ganador.
                                         </p>
-                                        <br />
                                         <p class="text-start text-justify">
                                             Subir una foto de buena calidad y un
                                             video mostrando sus habilidades de
                                             modelaje. Límite de peso del vídeo:
                                             5 mb, fotografía 2 mb.
                                         </p>
-                                        <br />
                                         <div class="text-start text-justify">
                                             La niña o niño debe cumplir con las
                                             edades de las 2 categorías:
@@ -346,7 +352,6 @@
                                             </ul>
                                             Se escogerán 3 niños por categoría.
                                         </div>
-
                                         <h4
                                             class="text-start text-justify ps-3 mt-3"
                                         >
@@ -371,14 +376,12 @@
                                                 </li>
                                             </ul>
                                         </div>
-
                                         <h4
                                             class="text-start text-justify ps-3 mt-3"
                                         >
                                             3. ¿Cómo se anunciarán a los
                                             ganadores?
                                         </h4>
-
                                         <p class="text-start text-justify">
                                             Los ganadores serán llamados por
                                             SIMAN para indicarles los detalles
@@ -387,7 +390,6 @@
                                             el evento, fecha y horario
                                             inamovible.
                                         </p>
-
                                         <p class="text-start text-justify">
                                             Durante la pasarela se tomarán
                                             fotografías de los modelos, las
@@ -399,13 +401,11 @@
                                             en cualquier medio que SIMAN utilice
                                             para comunicación publicitaria.
                                         </p>
-
                                         <h4
                                             class="text-start text-justify ps-3 mt-3"
                                         >
                                             4. Fecha y Horario
                                         </h4>
-
                                         <p class="text-start text-justify">
                                             La Pasarela Fun Time by Siman se
                                             llevará a cabo el Sábado 28 de mayo
@@ -415,13 +415,11 @@
                                             previa notificación para coordinar a
                                             los participantes.
                                         </p>
-
                                         <h4
                                             class="text-start text-justify ps-3 mt-3"
                                         >
                                             5. Formulario de inscripción.
                                         </h4>
-
                                         <p class="text-start text-justify">
                                             Al completar los datos y enviar el
                                             formulario de inscripción, Ud esta
@@ -468,17 +466,14 @@ export default {
             grupo: [""],
             img: null,
             video: null,
-            mensaje:'',
+            mensaje: "",
             //mostrar: false,
-             deshabilitar_boton:0,
-
-             // validaciones
-             validateImage:0,
-             validateVideo:0,
-             validateDPI:0,
-             validateCorreo:0,
-
-
+            deshabilitar_boton: 0,
+            // validaciones
+            validateImage: 0,
+            validateVideo: 0,
+            validateDPI: 0,
+            validateCorreo: 0,
             errorMostrarMsjgaleria: [],
             mensaje: "",
             deshabilitar_boton: 0,
@@ -487,7 +482,7 @@ export default {
     },
 
     methods: {
-          registrar: async function() {
+        registrar: async function () {
             if (this.validar()) {
                 return;
             }
@@ -501,8 +496,8 @@ export default {
             });
 
             let me = this;
-            me.deshabilitar_boton=1;
-           await axios
+            me.deshabilitar_boton = 1;
+            await axios
                 .post("/galeria/registro", {
                     nombre: this.nombre,
                     apellido: this.apellido,
@@ -541,107 +536,78 @@ export default {
         },
 
         getImage() {
-
-           let input = document.getElementById("image");
-           let img = input.files[0];
-            if (!(/\.(jpg|jpeg|png)$/i).test(img.name)) {
-
-                 this.validateImage=1;
-
-               }
-             else{
-                 this.validateImage=0;
-                 this.img = img;
-                 let freader = new FileReader();
-                 freader.readAsDataURL(img);
-                 freader.onload = (input) => {
-
-                  this.img = input.target.result;
-
-                        }
-
-             }
-
-
-
-
-
+            let input = document.getElementById("image");
+            let img = input.files[0];
+            if (!/\.(jpg|jpeg|png)$/i.test(img.name)) {
+                this.validateImage = 1;
+            } else {
+                this.validateImage = 0;
+                this.img = img;
+                let freader = new FileReader();
+                freader.readAsDataURL(img);
+                freader.onload = (input) => {
+                    this.img = input.target.result;
+                };
+            }
         },
 
         getVideo() {
-
             let input = document.getElementById("video");
             let video = input.files[0];
 
-            if (!(/\.(mp4|mov|avi|m4a)$/i).test(video.name)) {
-
-                 this.validateVideo=1;
-
-               }
-             else{
-                 this.validateVideo=0;
+            if (!/\.(mp4|mov|avi|m4a)$/i.test(video.name)) {
+                this.validateVideo = 1;
+            } else {
+                this.validateVideo = 0;
                 this.video = video;
-                let extension="mp4";
+                let extension = "mp4";
                 var freader = new FileReader();
-                 freader.readAsDataURL(video);
-                 freader.onload = (input) => {
-
-                this.video = input.target.result;
-                document.getElementById("video-preview").style.display='block';;
-                document.getElementById("video-preview").src = freader.result;
-                // alert(this.video);
-            };
-
-             }
-
+                freader.readAsDataURL(video);
+                freader.onload = (input) => {
+                    this.video = input.target.result;
+                    document.getElementById("video-preview").style.display =
+                        "block";
+                    document.getElementById("video-preview").src =
+                        freader.result;
+                    // alert(this.video);
+                };
+            }
 
             //this.mostrar = true;
-
-
-
-
         },
 
-         duplicado(){
-
-                  axios.put('/gallery/validar',{
-
-                    'dpi': this.dpi,
-
-
-
-                }).then(response => {
-                  this.mensaje = response.data;
-                  if(this.mensaje==="Existe"){
-                    this.validateDPI=1;
-
-                  }else{
-                       this.validateDPI=0;
-
-                  }
+        duplicado() {
+            axios
+                .put("/gallery/validar", {
+                    dpi: this.dpi,
                 })
-                .catch(error => {
-                   console.log(err);
-                 });
-
+                .then((response) => {
+                    this.mensaje = response.data;
+                    if (this.mensaje === "Existe") {
+                        this.validateDPI = 1;
+                    } else {
+                        this.validateDPI = 0;
+                    }
+                })
+                .catch((error) => {
+                    console.log(err);
+                });
         },
 
-
-         validarCorreo(){
-             let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-             if(document.getElementById('correo').value.match(mailformat)){
-                 this.validateCorreo=0;
-             }else{
-                 this.validateCorreo=1;
-             }
-         },
+        validarCorreo() {
+            let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (document.getElementById("correo").value.match(mailformat)) {
+                this.validateCorreo = 0;
+            } else {
+                this.validateCorreo = 1;
+            }
+        },
 
         validar() {
             this.errorGaleria = 0;
             this.errorMostrarMsjgaleria = [];
 
-
-          /*** validar campos vacios */
+            /*** validar campos vacios */
             if (!this.nombre) {
                 this.errorMostrarMsjgaleria.push(
                     "El Nombre de mamá / papá o tutor legal no puede estar vacio."
@@ -695,35 +661,25 @@ export default {
             }
 
             /*** validar duplicacion dpi */
-            if(this.validateDPI==1){
-
-                this.errorMostrarMsjgaleria.push(
-                    "El DPI ya esta Registrado!."
-                );
-
+            if (this.validateDPI == 1) {
+                this.errorMostrarMsjgaleria.push("El DPI ya esta Registrado!.");
             }
             /*** validar que sea una imagen */
 
-            if(this.validateImage==1){
+            if (this.validateImage == 1) {
                 this.errorMostrarMsjgaleria.push(
                     "El archivo no es una imagen."
                 );
             }
             /*** validar que sea un Video */
-            if(this.validateVideo==1){
-                this.errorMostrarMsjgaleria.push(
-                    "El archivo no es un video."
-                );
+            if (this.validateVideo == 1) {
+                this.errorMostrarMsjgaleria.push("El archivo no es un video.");
             }
 
-             /*** validar escritura de email */
-             if(this.validateCorreo==1){
-                this.errorMostrarMsjgaleria.push(
-                    "Ingrese un email Correcto!"
-                );
+            /*** validar escritura de email */
+            if (this.validateCorreo == 1) {
+                this.errorMostrarMsjgaleria.push("Ingrese un email Correcto!");
             }
-
-
 
             if (this.errorMostrarMsjgaleria.length) this.errorGaleria = 1;
 
@@ -745,13 +701,9 @@ export default {
             this.video = "";
             this.errorMostrarMsjgaleria = "";
 
-
             document.getElementById("video-preview").value = "";
             document.getElementById("image-preview").value = "";
-        }
-
-
-
+        },
     },
 };
 </script>
