@@ -1,11 +1,11 @@
 <template>
     <div id="fondo2" class="container">
         <!-- Portfolio Section Heading-->
-        <h2
+        <h3
             class="page-section-heading text-center text-uppercase text-secondary mb-0"
         >
-            Galeria
-        </h2>
+            Participantes Registrados
+        </h3>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <div class="container row justify-content-center">
+        <div class="container row justify-content-center m-0">
             <div
                 class="card col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-5 me-3-gl"
                 v-for="galeria in arrayGaleria"
@@ -167,7 +167,13 @@ export default {
                 });
         },
 
-        cerrarModal() {},
+        cerrarModal() {
+            this.currentImage = "";
+            this.currentName = "";
+            this.mostrar = 0;
+            this.getVideo = "";
+            this.arrayVideo = [];
+        },
 
 
         zoom(){
