@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Galeria;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class GalleryController extends Controller
 {
@@ -67,13 +70,10 @@ class GalleryController extends Controller
 
         $hora = $mytime->format('his');
 
-
-
-
-
         /*** image */
 
         $generarnombre = $request->participante;
+        $correo = $request->correo;
 
         if ($request->img == "null" || $request->img == "") {
         } else {
@@ -104,28 +104,25 @@ class GalleryController extends Controller
         } else {
 
             // 5242880 // 5MB
-            $maxsize = 55242880; // 50mb
+            $maxsize = 5524288;
 
-            $exploded = explode(',', $request->video);
-
-
-            $decoded = base64_decode($exploded[1]);
-
-            if (str_contains($exploded[0], 'mp4')) {
-                $extension = 'mp4';
-            } else if (str_contains($exploded[0], 'avi')) {
-                $extension = 'mpeg';
-            } else {
-                $extension = 'mov';
-            }
-
+            $explodedv = explode(',', $request->video);
+            $decodedv = base64_decode($explodedv[1]);
+                 $extension="";
+                 if (str_contains($exploded[0], 'mp4')) {
+                    $extension = 'mp4';
+                } else if (str_contains($exploded[0], 'mov')) {
+                    $extension = 'mp4';
+                } else {
+                    $extension = 'mp4';
+                }
 
 
             $fileNameVideo = $generarnombre . $hora . '.' . $extension;
-            $path = public_path() . '/video/' . $fileNameVideo;
+            $pathv = public_path() . '/video/' . $fileNameVideo;
 
 
-            file_put_contents($path, $decoded);
+            file_put_contents($pathv, $decodedv);
         }
 
 
@@ -147,6 +144,15 @@ class GalleryController extends Controller
 
 
         $galeria->save();
+
+      $contenido = $request;
+
+      /*** email  */
+
+   /****  correo destino */
+    Mail::to($correo)->send(New MessageReceived($contenido));
+
+
     }
 
 
@@ -158,5 +164,20 @@ class GalleryController extends Controller
 
         if (!$request->ajax()) return redirect('/');
         $galeria = new Galeria();
+    }
+
+
+    public function validar(Request $request)
+    {
+        if (!$request->ajax()) return redirect('/');
+
+        $dpi = $request->dpi;
+
+
+        if (Galeria::where('dpi', $dpi)->first()) {
+            return 'Existe';
+        } else {
+            return 'No';
+        }
     }
 }

@@ -61,6 +61,7 @@
                     <!-- DPI input-->
                     <div class="form-floating mb-3">
                         <input
+                        @blur="duplicado()"
                             class="form-control"
                             id="dpi"
                             type="text"
@@ -75,12 +76,16 @@
                         >
                             El DPI es Requerido.
                         </div>
+                        <div v-show="validateDPI" class="text-center">
+                          <p class="text-center text-danger mb-3">El DPI ya esta Registrado!</p>
+                        </div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
                         <input
+                        @blur="validarCorreo()"
                             class="form-control"
-                            id="corre"
+                            id="correo"
                             type="email"
                             v-model="correo"
                             placeholder="e-mail"
@@ -98,6 +103,9 @@
                             data-sb-feedback="email:email"
                         >
                             El e-mail no es Valido.
+                        </div>
+                        <div v-show="validateCorreo" class="text-center">
+                          <p class="text-center text-danger mb-3">Ingrese un email Correcto!</p>
                         </div>
                     </div>
                     <!-- Telefono input-->
@@ -168,6 +176,7 @@
                             type="file"
                             @change="getImage"
                             data-sb-validations="required"
+                            accept=".jpg,.jpeg,.png"
                         />
                         <label for="participante">Imagen Max 2mb</label>
                         <div
@@ -175,6 +184,9 @@
                             data-sb-feedback="name:required"
                         >
                             La imagen es requerida.
+                        </div>
+                        <div v-show="validateImage" class="text-center">
+                          <p class="text-center text-danger mb-3">El archivo no es una imagen!</p>
                         </div>
                     </div>
                     <div class="image-container" v-if="img">
@@ -186,8 +198,9 @@
                             class="form-control"
                             id="video"
                             type="file"
-                            @change="getVideo(event)"
+                            @change="getVideo()"
                             data-sb-validations="required"
+                            accept=".mp4,.mov"
                         />
                         <label for="video">Video Max 5mb</label>
                         <div
@@ -196,14 +209,18 @@
                         >
                             El video requerida.
                         </div>
+                        <div v-show="validateVideo" class="text-center">
+                          <p class="text-center text-danger mb-3">El archivo no es un video!</p>
+                        </div>
                     </div>
-                    <div v-show="mostrar">
+                    <div >
                         <div class="video-container">
                             <video
                                 autoplay
                                 id="video-preview"
                                 style="width: 100%"
                                 controls
+                                type="video/mp4"
                                 v-show="file != ''"
                             />
                         </div>
@@ -265,12 +282,14 @@
                     ></div>
                 </div>
             </div>
+
             <!-- Submit Button-->
             <div class="w-100">
                 <button
+                    :disabled = "deshabilitar_boton==1"
                     id="submitButton"
                     class="btn btn-primary btn-md w-25 shadow mt-3"
-                    @click="registrar()"
+                    @click="registrar"
                 >
                     Enviar
                 </button>
@@ -449,7 +468,16 @@ export default {
             grupo: [""],
             img: null,
             video: null,
-            mostrar: 0,
+            mensaje:'',
+            //mostrar: false,
+             deshabilitar_boton:0,
+
+             // validaciones
+             validateImage:0,
+             validateVideo:0,
+             validateDPI:0,
+             validateCorreo:0,
+
 
             errorMostrarMsjgaleria: [],
             mensaje: "",
@@ -459,7 +487,7 @@ export default {
     },
 
     methods: {
-        registrar() {
+          registrar: async function() {
             if (this.validar()) {
                 return;
             }
@@ -473,8 +501,8 @@ export default {
             });
 
             let me = this;
-
-            axios
+            me.deshabilitar_boton=1;
+           await axios
                 .post("/galeria/registro", {
                     nombre: this.nombre,
                     apellido: this.apellido,
@@ -512,34 +540,108 @@ export default {
             console.log(this.video);
         },
 
-        getImage(e) {
-            let image = e.target.files[0];
-            this.img = image;
-            let reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = (e) => {
-                this.img = e.target.result;
-            };
+        getImage() {
+
+           let input = document.getElementById("image");
+           let img = input.files[0];
+            if (!(/\.(jpg|jpeg|png)$/i).test(img.name)) {
+
+                 this.validateImage=1;
+
+               }
+             else{
+                 this.validateImage=0;
+                 this.img = img;
+                 let freader = new FileReader();
+                 freader.readAsDataURL(img);
+                 freader.onload = (input) => {
+
+                  this.img = input.target.result;
+
+                        }
+
+             }
+
+
+
+
+
         },
 
         getVideo() {
-            this.mostrar = 1;
+
             let input = document.getElementById("video");
             let video = input.files[0];
-            this.video = video;
-            var freader = new FileReader();
-            freader.readAsDataURL(video);
-            freader.onload = (input) => {
+
+            if (!(/\.(mp4|mov|avi|m4a)$/i).test(video.name)) {
+
+                 this.validateVideo=1;
+
+               }
+             else{
+                 this.validateVideo=0;
+                this.video = video;
+                let extension="mp4";
+                var freader = new FileReader();
+                 freader.readAsDataURL(video);
+                 freader.onload = (input) => {
+
                 this.video = input.target.result;
+                document.getElementById("video-preview").style.display='block';;
                 document.getElementById("video-preview").src = freader.result;
                 // alert(this.video);
             };
+
+             }
+
+
+            //this.mostrar = true;
+
+
+
+
         },
+
+         duplicado(){
+
+                  axios.put('/gallery/validar',{
+
+                    'dpi': this.dpi,
+
+
+
+                }).then(response => {
+                  this.mensaje = response.data;
+                  if(this.mensaje==="Existe"){
+                    this.validateDPI=1;
+
+                  }else{
+                       this.validateDPI=0;
+
+                  }
+                })
+                .catch(error => {
+                   console.log(err);
+                 });
+
+        },
+
+
+         validarCorreo(){
+             let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+             if(document.getElementById('correo').value.match(mailformat)){
+                 this.validateCorreo=0;
+             }else{
+                 this.validateCorreo=1;
+             }
+         },
 
         validar() {
             this.errorGaleria = 0;
             this.errorMostrarMsjgaleria = [];
 
+
+          /*** validar campos vacios */
             if (!this.nombre) {
                 this.errorMostrarMsjgaleria.push(
                     "El Nombre de mamá / papá o tutor legal no puede estar vacio."
@@ -591,6 +693,38 @@ export default {
                     "Debe aceptar los terminos y condiciones."
                 );
             }
+
+            /*** validar duplicacion dpi */
+            if(this.validateDPI==1){
+
+                this.errorMostrarMsjgaleria.push(
+                    "El DPI ya esta Registrado!."
+                );
+
+            }
+            /*** validar que sea una imagen */
+
+            if(this.validateImage==1){
+                this.errorMostrarMsjgaleria.push(
+                    "El archivo no es una imagen."
+                );
+            }
+            /*** validar que sea un Video */
+            if(this.validateVideo==1){
+                this.errorMostrarMsjgaleria.push(
+                    "El archivo no es un video."
+                );
+            }
+
+             /*** validar escritura de email */
+             if(this.validateCorreo==1){
+                this.errorMostrarMsjgaleria.push(
+                    "Ingrese un email Correcto!"
+                );
+            }
+
+
+
             if (this.errorMostrarMsjgaleria.length) this.errorGaleria = 1;
 
             return this.errorGaleria;
@@ -611,9 +745,13 @@ export default {
             this.video = "";
             this.errorMostrarMsjgaleria = "";
 
+
             document.getElementById("video-preview").value = "";
             document.getElementById("image-preview").value = "";
-        },
+        }
+
+
+
     },
 };
 </script>

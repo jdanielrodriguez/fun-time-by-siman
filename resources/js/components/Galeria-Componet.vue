@@ -42,14 +42,17 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
+
                                     <div
+                                    id="zoomImage"
                                         class="image-container"
                                         v-if="currentImage"
                                     >
-                                        <img
+                                        <img   @click="zoom()"
                                             class="img-fluid item"
                                             :src="urlImage + currentImage"
                                             alt="..."
+                                            loading="lazy"
                                         />
                                     </div>
 
@@ -94,6 +97,7 @@
                         class="img-fluid item"
                         :src="urlImage + galeria.image"
                         alt="..."
+                        loading="lazy"
                     />
                 </div>
                 <p>{{ galeria.participante }}</p>
@@ -126,32 +130,16 @@ export default {
             mostrar: 0,
             getVideo: "",
             arrayVideo: [],
+
         };
     },
 
     methods: {
-        listarGaleria() {
-            /*
-
-                if (this.validarReporte()){
-                    return;
-                }
-                console.log(lugar);
-                console.log(de);
-                console.log(a);
-
-                   swal.fire({
-              title: "Obteniendo Datos",
-              text: "Por favor espere",
-              imageUrl: "img/loading.gif",
-              showConfirmButton: false,
-              allowOutsideClick: false
-            });
-            */
+        listarGaleria: async function() {
 
             let me = this;
             var url = "/gallery/list";
-            axios
+               await axios
                 .get(url)
                 .then(function (response) {
                     var respuesta = response.data;
@@ -180,9 +168,29 @@ export default {
         },
 
         cerrarModal() {},
+
+
+        zoom(){
+
+       // document.getElementById("zoomImage").style.width = "800px";
+
+
+        },
+
+
     },
     mounted() {
         this.listarGaleria();
+
     },
 };
 </script>
+<style>
+
+zoom{
+
+    width: 400px;
+}
+
+
+</style>
