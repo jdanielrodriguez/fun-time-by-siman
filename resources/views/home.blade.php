@@ -80,7 +80,7 @@
     <section class="page-section form-content">
         <div id="app">
             <form-component></form-component>
-            <section class="page-section portfolio pt-3 h-auto" id="galeria">
+            <section class="page-section portfolio pt-3 mt-2 h-auto" id="galeria">
                 <galeria-component></galeria-component>
             </section>
         </div>

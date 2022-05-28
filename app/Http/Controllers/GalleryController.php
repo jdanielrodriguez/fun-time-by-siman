@@ -138,8 +138,8 @@ class GalleryController extends Controller
         $galeria->correo = $request->correo;
         $galeria->participante = $request->participante;
         $galeria->grupo = $request->grupo;
-        // $galeria->image = $fileName;
-        // $galeria->video = $fileNameVideo;
+        $galeria->image = '';
+        $galeria->video = '';
         $galeria->estado = '1';
 
 
@@ -150,7 +150,7 @@ class GalleryController extends Controller
       /*** email  */
 
    /****  correo destino */
-    Mail::to($correo)->send(New MessageReceived($contenido));
+    //Mail::to($correo)->send(New MessageReceived($contenido));
 
 
     }

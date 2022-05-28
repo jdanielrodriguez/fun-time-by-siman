@@ -77,7 +77,7 @@
                             El DPI es Requerido.
                         </div>
                         <div v-show="validateDPI" class="text-center">
-                            <p class="text-center text-danger mb-3">
+                            <p class="text-center text-danger mb-3 f-size-18">
                                 El DPI ya esta Registrado!
                             </p>
                         </div>
@@ -90,15 +90,15 @@
                             id="correo"
                             type="email"
                             v-model="correo"
-                            placeholder="e-mail"
+                            placeholder="E-mail"
                             data-sb-validations="required,email"
                         />
-                        <label for="correo">e-mail</label>
+                        <label for="correo">E-mail</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="email:required"
                         >
-                            El e-mail es required.
+                            El E-mail es required.
                         </div>
                         <div
                             class="invalid-feedback"
@@ -175,7 +175,7 @@
                     </div>
 
                     <div v-show="validateHorario" class="text-center">
-                        <p class="text-center text-danger mb-3">
+                        <p class="text-center text-danger mb-3 f-size-18">
                             El Horario ya llego al maximo de participantes, seleccione otro.
                         </p>
                     </div>

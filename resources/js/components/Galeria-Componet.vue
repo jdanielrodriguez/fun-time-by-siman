@@ -83,7 +83,7 @@
                 :key="galeria.id"
             >
                 <button
-                        class="btn btn-primary disabled btn-xl form-control pt-0 border-top-0 min-heigth-galery"
+                        class="btn btn-primary btn-xl form-control pt-0 min-heigth-galery"
                     >
                     <div class="headerButton mb-4">
                         <h5>
