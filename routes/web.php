@@ -39,3 +39,5 @@ Route::get('/gallery/list', [App\Http\Controllers\GalleryController::class, 'ind
 Route::get('/gallery/video', [App\Http\Controllers\GalleryController::class, 'video']);
 /**** Validar DPI */
 Route::put('/gallery/validar', [App\Http\Controllers\GalleryController::class, 'validar']);
+Route::post('/gallery/validar-grupo', [App\Http\Controllers\GalleryController::class, 'validarGrupo']);
+Route::get('/gallery/cantidad-grupo', [App\Http\Controllers\GalleryController::class, 'cantidadGrupo']);

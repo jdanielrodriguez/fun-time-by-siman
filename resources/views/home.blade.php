@@ -58,8 +58,8 @@
                             onClick="toggleModal()" href="#instrucciones">Instrucciones</a></li>
                     <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                             onClick="toggleModal()" href="#formulario">Formulario</a></li>
-                    <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            onClick="toggleModal()" href="#galeria">Galeria</a></li>
+                    {{--  <li class="nav-item mx-0 mx-lg-1 text-dark"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            onClick="toggleModal()" href="#galeria">Galeria</a></li>  --}}
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
     <section class="page-section form-content">
         <div id="app">
             <form-component></form-component>
-            <section class="page-section portfolio" id="galeria">
+            <section class="page-section portfolio pt-3 h-auto" id="galeria">
                 <galeria-component></galeria-component>
             </section>
         </div>

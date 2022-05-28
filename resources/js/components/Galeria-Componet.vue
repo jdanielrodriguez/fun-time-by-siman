@@ -1,17 +1,7 @@
 <template>
     <div id="fondo2" class="container">
         <!-- Portfolio Section Heading-->
-        <h3
-            class="page-section-heading text-center text-uppercase text-secondary mb-0"
-        >
-            Participantes Registrados
-        </h3>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
+
 
         <div
             class="portfolio-modal modal fade"
@@ -88,29 +78,22 @@
         </div>
         <div class="container row justify-content-center m-0">
             <div
-                class="card col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-5 me-3-gl"
-                v-for="galeria in arrayGaleria"
+                class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mb-3 me-3-gl min-heigth-galery"
+                v-for="(galeria,index) in arrayGaleria"
                 :key="galeria.id"
             >
-                <div class="image-container">
-                    <img
-                        class="img-fluid item"
-                        :src="urlImage + galeria.image"
-                        alt="..."
-                        loading="lazy"
-                    />
-                </div>
-                <p>{{ galeria.participante }}</p>
-                <div class="card-body">
-                    <button
-                        @click="verVideo(galeria)"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#galeriaModal"
+                <button
+                        class="btn btn-primary disabled btn-xl form-control pt-0 border-top-0 min-heigth-galery"
                     >
-                        Video
-                    </button>
-                </div>
+                    <div class="headerButton mb-4">
+                        <h5>
+                            {{ galeria.label ? galeria.name : '' }}
+                        </h5>
+                    </div>
+                    <div class="bodyButton">
+                        {{ galeria.label ? galeria.label + ' cupos disponibles.' : '' }}
+                    </div>
+                </button>
             </div>
         </div>
 
@@ -126,7 +109,7 @@ export default {
             currentImage: "",
             currentName: "",
             urlVideo: "video/",
-            arrayGaleria: [],
+            arrayGaleria: [{id:1,label:'',name:'Carrera a las 16:00 H'},{id:2,label:'',name:'Carrera a las 17:00 H'},{id:3,label:'',name:'Carrera a las 18:00 H'}],
             mostrar: 0,
             getVideo: "",
             arrayVideo: [],
@@ -135,19 +118,11 @@ export default {
     },
 
     methods: {
-        listarGaleria: async function() {
+        listarGaleria: function() {
+            for(var i = 0; i < this.arrayGaleria.length; i++){
+                this.arrayGaleria[i].label = this.cantidadHorarios(this.arrayGaleria[i]);
+            }
 
-            let me = this;
-            var url = "/gallery/list";
-               await axios
-                .get(url)
-                .then(function (response) {
-                    var respuesta = response.data;
-                    me.arrayGaleria = respuesta.galeria;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
         },
 
         verVideo(galeria) {
@@ -167,6 +142,19 @@ export default {
                 });
         },
 
+        cantidadHorarios(galeria) {
+            axios
+                .get("/gallery/cantidad-grupo?grupo="+galeria.id)
+                .then((response) => {
+                    const label = "" + (20 - response.data);
+                    galeria.label = label;
+                    return label;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return '';
+                });
+        },
         cerrarModal() {
             this.currentImage = "";
             this.currentName = "";
@@ -185,9 +173,8 @@ export default {
 
 
     },
-    mounted() {
-        this.listarGaleria();
-
+    async mounted() {
+        await this.listarGaleria();
     },
 };
 </script>

@@ -75,55 +75,55 @@ class GalleryController extends Controller
         $generarnombre = $request->participante;
         $correo = $request->correo;
 
-        if ($request->img == "null" || $request->img == "") {
-        } else {
+        // if ($request->img == "null" || $request->img == "") {
+        // } else {
 
 
-            $exploded = explode(',', $request->img);
-            $decoded = base64_decode($exploded[1]);
+        //     $exploded = explode(',', $request->img);
+        //     $decoded = base64_decode($exploded[1]);
 
-            if (str_contains($exploded[0], 'jpeg')) {
-                $extension = 'jpeg';
-            } else if (str_contains($exploded[0], 'jpg')) {
-                $extension = 'jpg';
-            } else {
-                $extension = 'png';
-            }
+        //     if (str_contains($exploded[0], 'jpeg')) {
+        //         $extension = 'jpeg';
+        //     } else if (str_contains($exploded[0], 'jpg')) {
+        //         $extension = 'jpg';
+        //     } else {
+        //         $extension = 'png';
+        //     }
 
-            $fileName = $generarnombre . $hora . '.' . $extension;
-            $path = public_path() . '/img/' . $fileName;
-
-
-            file_put_contents($path, $decoded);
-        }
-
-        /*** video */
+        //     $fileName = $generarnombre . $hora . '.' . $extension;
+        //     $path = public_path() . '/img/' . $fileName;
 
 
-        if ($request->video == "null" || $request->video == "") {
-        } else {
+        //     file_put_contents($path, $decoded);
+        // }
 
-            // 5242880 // 5MB
-            $maxsize = 5524288;
-
-            $explodedv = explode(',', $request->video);
-            $decodedv = base64_decode($explodedv[1]);
-                 $extension="";
-                 if (str_contains($exploded[0], 'mp4')) {
-                    $extension = 'mp4';
-                } else if (str_contains($exploded[0], 'mov')) {
-                    $extension = 'mp4';
-                } else {
-                    $extension = 'mp4';
-                }
+        // /*** video */
 
 
-            $fileNameVideo = $generarnombre . $hora . '.' . $extension;
-            $pathv = public_path() . '/video/' . $fileNameVideo;
+        // if ($request->video == "null" || $request->video == "") {
+        // } else {
+
+        //     // 5242880 // 5MB
+        //     $maxsize = 5524288;
+
+        //     $explodedv = explode(',', $request->video);
+        //     $decodedv = base64_decode($explodedv[1]);
+        //          $extension="";
+        //          if (str_contains($exploded[0], 'mp4')) {
+        //             $extension = 'mp4';
+        //         } else if (str_contains($exploded[0], 'mov')) {
+        //             $extension = 'mp4';
+        //         } else {
+        //             $extension = 'mp4';
+        //         }
 
 
-            file_put_contents($pathv, $decodedv);
-        }
+        //     $fileNameVideo = $generarnombre . $hora . '.' . $extension;
+        //     $pathv = public_path() . '/video/' . $fileNameVideo;
+
+
+        //     file_put_contents($pathv, $decodedv);
+        // }
 
 
 
@@ -138,8 +138,8 @@ class GalleryController extends Controller
         $galeria->correo = $request->correo;
         $galeria->participante = $request->participante;
         $galeria->grupo = $request->grupo;
-        $galeria->image = $fileName;
-        $galeria->video = $fileNameVideo;
+        // $galeria->image = $fileName;
+        // $galeria->video = $fileNameVideo;
         $galeria->estado = '1';
 
 
@@ -179,5 +179,33 @@ class GalleryController extends Controller
         } else {
             return 'No';
         }
+    }
+
+
+
+
+    public function validarGrupo(Request $request)
+    {
+        if (!$request->ajax()) return redirect('/');
+
+        $grupo = $request->grupo;
+
+
+        if (Galeria::where('grupo', $grupo)->count()>=20) {
+            return 'El grupo esta lleno';
+        } else {
+            return 'No';
+        }
+    }
+
+
+
+
+    public function cantidadGrupo(Request $request)
+    {
+        if (!$request->ajax()) return redirect('/');
+
+        $grupo = $request->grupo;
+        return Galeria::where('grupo', $grupo)->count();
     }
 }

@@ -153,87 +153,32 @@
                         <select
                             class="form-select"
                             aria-label="Default select example"
+                            @change="validarHorario()"
                             v-model="grupo"
                             id="grupo"
                             data-sb-validations="required"
                         >
                             <option value="0" disabled>
-                                Seleccione una Categoría
+                                Seleccione un Horario
                             </option>
-                            <option value="1">De 4 a 7 años</option>
-                            <option value="2">De 8 a 12 años</option>
+                            <option value="1">16:00 Horas</option>
+                            <option value="2">17:00 Horas</option>
+                            <option value="3">18:00 Horas</option>
                         </select>
-                        <label for="grupo">Categoría</label>
+                        <label for="grupo">Horarios</label>
                         <div
                             class="invalid-feedback"
                             data-sb-feedback="name:required"
                         >
-                            La categoria es requerida.
+                            El Horario es requerida.
                         </div>
                     </div>
 
-                    <!-- Imagen input-->
-                    <div class="form-floating mb-3">
-                        <input
-                            class="form-control"
-                            id="image"
-                            type="file"
-                            @change="getImage"
-                            data-sb-validations="required"
-                            accept=".jpg,.jpeg,.png"
-                        />
-                        <label for="participante">Imagen Max 2mb</label>
-                        <div
-                            class="invalid-feedback"
-                            data-sb-feedback="name:required"
-                        >
-                            La imagen es requerida.
-                        </div>
-                        <div v-show="validateImage" class="text-center">
-                            <p class="text-center text-danger mb-3">
-                                El archivo no es una imagen!
-                            </p>
-                        </div>
+                    <div v-show="validateHorario" class="text-center">
+                        <p class="text-center text-danger mb-3">
+                            El Horario ya llego al maximo de participantes, seleccione otro.
+                        </p>
                     </div>
-                    <div class="image-container" v-if="img">
-                        <img class="img-fluid item" :src="img" alt="..." />
-                    </div>
-                    <!-- Video input-->
-                    <div class="form-floating mb-3">
-                        <input
-                            class="form-control"
-                            id="video"
-                            type="file"
-                            @change="getVideo()"
-                            data-sb-validations="required"
-                            accept=".mp4,.mov"
-                        />
-                        <label for="video">Video Max 5mb</label>
-                        <div
-                            class="invalid-feedback"
-                            data-sb-feedback="name:required"
-                        >
-                            El video requerida.
-                        </div>
-                        <div v-show="validateVideo" class="text-center">
-                            <p class="text-center text-danger mb-3">
-                                El archivo no es un video!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="view">
-                        <div class="video-container">
-                            <video
-                                autoplay
-                                id="video-preview"
-                                style="width: 100%"
-                                controls
-                                type="video/mp4"
-                                v-show="file != ''"
-                            />
-                        </div>
-                    </div>
-
                     <!-- Submit success message-->
                     <!---->
                     <!-- This is what your users will see when the form-->
@@ -464,8 +409,6 @@ export default {
             correo: "",
             participante: "",
             grupo: [""],
-            img: null,
-            video: null,
             mensaje: "",
             //mostrar: false,
             deshabilitar_boton: 0,
@@ -473,6 +416,7 @@ export default {
             validateImage: 0,
             validateVideo: 0,
             validateDPI: 0,
+            validateHorario: 0,
             validateCorreo: 0,
             errorMostrarMsjgaleria: [],
             mensaje: "",
@@ -506,8 +450,6 @@ export default {
                     telefono: this.telefono,
                     participante: this.participante,
                     grupo: this.grupo,
-                    img: this.img,
-                    video: this.video,
                 })
                 .then(function (response) {
                     Swal.fire({
@@ -594,6 +536,33 @@ export default {
                 });
         },
 
+        validarHorario() {
+            axios
+                .post("/gallery/validar-grupo", {
+                    grupo: this.grupo,
+                })
+                .then((response) => {
+                    this.mensaje = response.data;
+                    if (this.mensaje === "El grupo esta lleno") {
+                        this.validateHorario = 1;
+                    } else {
+                        this.validateHorario = 0;
+                    }
+                })
+                .catch((error) => {
+                    console.log(err);
+                });
+        },
+        cantidadHorario(grupo) {
+            axios
+                .get("/gallery/cantidad-grupo?grupo="+grupo)
+                .then((response) => {
+                    return response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
         validarCorreo() {
             let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if (document.getElementById("correo").value.match(mailformat)) {
@@ -643,16 +612,6 @@ export default {
                     "La Categoria no puede estar Vacio."
                 );
             }
-            if (!this.img) {
-                this.errorMostrarMsjgaleria.push(
-                    "La imagen no puede estar vacio."
-                );
-            }
-            if (!this.video) {
-                this.errorMostrarMsjgaleria.push(
-                    "El Video no puede estar vacio."
-                );
-            }
 
             if (!this.terminos) {
                 this.errorMostrarMsjgaleria.push(
@@ -664,16 +623,10 @@ export default {
             if (this.validateDPI == 1) {
                 this.errorMostrarMsjgaleria.push("El DPI ya esta Registrado!.");
             }
-            /*** validar que sea una imagen */
 
-            if (this.validateImage == 1) {
-                this.errorMostrarMsjgaleria.push(
-                    "El archivo no es una imagen."
-                );
-            }
-            /*** validar que sea un Video */
-            if (this.validateVideo == 1) {
-                this.errorMostrarMsjgaleria.push("El archivo no es un video.");
+            /*** validar cantidad de por horario */
+            if (this.validateHorario == 1) {
+                this.errorMostrarMsjgaleria.push("El Horario seleccionado esta lleno!.");
             }
 
             /*** validar escritura de email */
@@ -697,12 +650,7 @@ export default {
             this.fechaNacimiento = "";
             this.deshabilitar_boton = 0;
             this.errorGaleria = 0;
-            this.image = "";
-            this.video = "";
             this.errorMostrarMsjgaleria = "";
-
-            document.getElementById("video-preview").value = "";
-            document.getElementById("image-preview").value = "";
         },
     },
 };

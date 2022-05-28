@@ -12140,7 +12140,7 @@ html {
 
 @media (min-width: 992px) {
     .masthead {
-        padding-top: calc(6rem + 104px);
+        padding-top: calc(1rem + 104px);
         padding-bottom: 6rem;
     }
 
@@ -12151,6 +12151,9 @@ html {
 
     .masthead .masthead-subheading {
         font-size: 1.5rem;
+    }
+    .masthead>.container>.divider-custom>img {
+        width: 40%;
     }
 }
 
@@ -13550,7 +13553,21 @@ section {
     margin: auto;
 }
 
+.headerButton{
+    background-color: #ffffff;
+    color: var(--bs-primary);
+    border-radius: 0px 0px 30px 30px;
+    width: 100%;
+}
 
+.min-heigth-galery{
+    min-height: 150px;
+    height: 150px;
+}
+
+.bodyButton{
+    height: 100px;
+}
 
 .image-container {
     width: 200px;
@@ -13641,7 +13658,7 @@ section {
     }
 
     .lista>img {
-        max-width: 80%;
+        max-width: 100%;
         width: auto;
         height: auto;
     }
