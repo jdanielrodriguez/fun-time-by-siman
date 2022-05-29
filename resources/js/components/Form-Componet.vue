@@ -161,9 +161,9 @@
                             <option value="0" disabled>
                                 Seleccione un Horario
                             </option>
-                            <option value="1">16:00 Horas</option>
-                            <option value="2">17:00 Horas</option>
-                            <option value="3">18:00 Horas</option>
+                            <option value="1" v-if="grupos[0]">16:00 Horas</option>
+                            <option value="2" v-if="grupos[1]">17:00 Horas</option>
+                            <option value="3" v-if="grupos[2]">18:00 Horas</option>
                         </select>
                         <label for="grupo">Horarios</label>
                         <div
@@ -396,8 +396,6 @@
 import Swal from "sweetalert2";
 
 export default {
-    mounted() {},
-
     data() {
         return {
             nombre: "",
@@ -409,6 +407,7 @@ export default {
             correo: "",
             participante: "",
             grupo: [""],
+            grupos: [],
             mensaje: "",
             //mostrar: false,
             deshabilitar_boton: 0,
@@ -553,15 +552,25 @@ export default {
                     console.log(err);
                 });
         },
-        cantidadHorario(grupo) {
-            axios
+        async cantidadHorario(grupo) {
+            let ret;
+            await axios
                 .get("/gallery/cantidad-grupo?grupo="+grupo)
-                .then((response) => {
-                    return response.data;
+                .then((response)=>{
+                    ret = response.data;
                 })
-                .catch((error) => {
-                    console.log(error);
+                .catch(err => {
+                    console.log(err);
                 });
+            return ret;
+        },
+
+        obtenerHorarios: async function() {
+            this.grupos.length = 0;
+            for(var i = 0; i < 3; i++){
+                let horario = await this.cantidadHorario(i+1);
+                this.grupos.push(horario<=20);
+            }
         },
         validarCorreo() {
             let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -652,6 +661,9 @@ export default {
             this.errorGaleria = 0;
             this.errorMostrarMsjgaleria = "";
         },
+    },
+    async mounted() {
+        await this.obtenerHorarios();
     },
 };
 </script>
