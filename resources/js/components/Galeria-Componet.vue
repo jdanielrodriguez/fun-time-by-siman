@@ -109,7 +109,7 @@ export default {
             currentImage: "",
             currentName: "",
             urlVideo: "video/",
-            arrayGaleria: [{id:1,label:'',name:'Carrera a las 16:00 H'},{id:2,label:'',name:'Carrera a las 17:00 H'},{id:3,label:'',name:'Carrera a las 18:00 H'}],
+            arrayGaleria: [{id:1,label:'',name:'Carrera a las 10:00 H'},{id:2,label:'',name:'Carrera a las 11:00 H'},{id:3,label:'',name:'Carrera a las 12:00 H'}],
             mostrar: 0,
             getVideo: "",
             arrayVideo: [],

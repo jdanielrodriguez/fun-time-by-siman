@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Fun Time Casting | Siman</title>
+    <title>Fun Time Baby Race | Siman</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -83,6 +83,9 @@
             <section class="page-section portfolio pt-3 mt-2 h-auto" id="galeria">
                 <galeria-component></galeria-component>
             </section>
+        </div>
+        <div class="footerImg">
+            <img src="asset/image/logo-siman.png" alt="">
         </div>
     </section>
     <!-- Portfolio Modal 1-->

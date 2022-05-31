@@ -1,5 +1,5 @@
 <template>
-    <div class="container" id="formulario">
+    <div class="container" id="formulario" v-if="!mostrar">
         <!-- Contact Section Heading-->
         <h5
             class="page-section-heading text-center text-uppercase text-primary mb-3"
@@ -161,9 +161,9 @@
                             <option value="0" disabled>
                                 Seleccione un Horario
                             </option>
-                            <option value="1" v-if="grupos[0]">16:00 Horas</option>
-                            <option value="2" v-if="grupos[1]">17:00 Horas</option>
-                            <option value="3" v-if="grupos[2]">18:00 Horas</option>
+                            <option value="1" v-if="grupos[0]">10:00 Horas</option>
+                            <option value="2" v-if="grupos[1]">11:00 Horas</option>
+                            <option value="3" v-if="grupos[2]">12:00 Horas</option>
                         </select>
                         <label for="grupo">Horarios</label>
                         <div
@@ -390,6 +390,11 @@
             </div>
         </div>
     </div>
+    <div class="container" v-else>
+        <div class="finish">
+            <img src="asset/image/finish.png" alt="">
+        </div>
+    </div>
 </template>
 
 <script>
@@ -409,7 +414,7 @@ export default {
             grupo: [""],
             grupos: [],
             mensaje: "",
-            //mostrar: false,
+            mostrar: 0,
             deshabilitar_boton: 0,
             // validaciones
             validateImage: 0,
@@ -440,6 +445,7 @@ export default {
 
             let me = this;
             me.deshabilitar_boton = 1;
+            me.mostrar = 1;
             await axios
                 .post("/galeria/registro", {
                     nombre: this.nombre,
@@ -456,10 +462,9 @@ export default {
                         icon: "success",
                         title: "Datos Agregados Con Exito!",
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 2500,
                     });
-                    me.mostrar = 0;
-                    window.location.reload();
+                    setTimeout(window.location.reload.bind(window.location), 3000);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -514,7 +519,7 @@ export default {
                 };
             }
 
-            //this.mostrar = true;
+            this.mostrar = 1;
         },
 
         duplicado() {
