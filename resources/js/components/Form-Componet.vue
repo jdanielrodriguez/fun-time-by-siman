@@ -161,9 +161,15 @@
                             <option value="0" disabled>
                                 Seleccione un Horario
                             </option>
-                            <option value="1" v-if="grupos[0]">10:00 Horas</option>
-                            <option value="2" v-if="grupos[1]">11:00 Horas</option>
-                            <option value="3" v-if="grupos[2]">12:00 Horas</option>
+                            <option value="1" v-if="grupos[0]">
+                                10:00 Horas
+                            </option>
+                            <option value="2" v-if="grupos[1]">
+                                11:00 Horas
+                            </option>
+                            <option value="3" v-if="grupos[2]">
+                                12:00 Horas
+                            </option>
                         </select>
                         <label for="grupo">Horarios</label>
                         <div
@@ -176,7 +182,8 @@
 
                     <div v-show="validateHorario" class="text-center">
                         <p class="text-center text-danger mb-3 f-size-18">
-                            El Horario ya llego al maximo de participantes, seleccione otro.
+                            El Horario ya llego al maximo de participantes,
+                            seleccione otro.
                         </p>
                     </div>
                     <!-- Submit success message-->
@@ -261,115 +268,79 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8 mx-auto">
                                         <h2>
-                                            Términos y Condiciones Funtime
-                                            Casting Siman.
+                                            Términos y Condiciones Funtime Baby
+                                            Race.
                                         </h2>
-                                        <h4
-                                            class="text-start text-justify ps-3"
-                                        >
-                                            1. ¿Cómo Participar?
-                                        </h4>
                                         <p class="text-start text-justify">
-                                            Tendrás que llenar un formulario
-                                            online en www.funtimesiman.com con
-                                            los datos de padres o tutor legal,
-                                            aceptando la cesión de las imágenes
-                                            del casting de niños a SIMAN al
-                                            enviar el formulario, así como las
-                                            fotografías de la pasarela las
-                                            cuales aparecerán posteriormente en
-                                            redes sociales de ser seleccionado
-                                            ganador.
+                                            1. Podrán participar en el Concurso
+                                            todas aquellas personas mayores de
+                                            edad, con sus bebés y residentes en
+                                            el territorio de Guatemala que se
+                                            hayan preinscrito asistan al
+                                            certamen y se presenten de manera
+                                            presencial.
                                         </p>
                                         <p class="text-start text-justify">
-                                            Subir una foto de buena calidad y un
-                                            video mostrando sus habilidades de
-                                            modelaje. Límite de peso del vídeo:
-                                            5 mb, fotografía 2 mb.
-                                        </p>
-                                        <div class="text-start text-justify">
-                                            La niña o niño debe cumplir con las
-                                            edades de las 2 categorías:
-                                            <br />
-                                            <ul>
-                                                <li>De 4 a 7 años.</li>
-                                                <li>De 8 a 12 años.</li>
-                                            </ul>
-                                            Se escogerán 3 niños por categoría.
-                                        </div>
-                                        <h4
-                                            class="text-start text-justify ps-3 mt-3"
-                                        >
-                                            2. Premios:
-                                        </h4>
-                                        <div class="text-start text-justify">
-                                            <ul>
-                                                <li>
-                                                    Participar en la pasarela de
-                                                    niños by Siman
-                                                </li>
-                                                <li>
-                                                    Un certificado de regalo de
-                                                    Q1,000.00 para cada ganador,
-                                                    el cual se entregará el día
-                                                    del evento.
-                                                </li>
-                                                <li>
-                                                    Se les obsequiará los
-                                                    outfits que utilizarán en la
-                                                    pasarela.
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h4
-                                            class="text-start text-justify ps-3 mt-3"
-                                        >
-                                            3. ¿Cómo se anunciarán a los
-                                            ganadores?
-                                        </h4>
-                                        <p class="text-start text-justify">
-                                            Los ganadores serán llamados por
-                                            SIMAN para indicarles los detalles
-                                            de la pasarela asi como el dia que
-                                            deben llegar a tallarse la ropa para
-                                            el evento, fecha y horario
-                                            inamovible.
+                                            2. La participación en el Concurso
+                                            es gratuita, de tal manera que no
+                                            será necesaria la compra de ningún
+                                            producto, ni el pago de cuota o
+                                            cantidad alguna para la
+                                            participación y en su caso, la
+                                            obtención del premio objeto del
+                                            mismo.
                                         </p>
                                         <p class="text-start text-justify">
-                                            Durante la pasarela se tomarán
-                                            fotografías de los modelos, las
-                                            cuales se comprometen a ceder todos
-                                            los derechos de uso para fines
-                                            publitarios sin fecha de caducidad.
-                                            Estas imágenes aparecerán,
-                                            posteriormente, en redes sociales y
-                                            en cualquier medio que SIMAN utilice
-                                            para comunicación publicitaria.
+                                            3. No podrán participar en el
+                                            concurso los bebés que actualmente
+                                            estén caminando ya que se trata de
+                                            una carrera de gateo.
                                         </p>
-                                        <h4
-                                            class="text-start text-justify ps-3 mt-3"
-                                        >
-                                            4. Fecha y Horario
-                                        </h4>
                                         <p class="text-start text-justify">
-                                            La Pasarela Fun Time by Siman se
-                                            llevará a cabo el Sábado 28 de mayo
-                                            de 2022 a las 16:30 horas en la
-                                            tienda de Siman Pradera Concepción.
-                                            Esta fecha y hora puede variar con
-                                            previa notificación para coordinar a
-                                            los participantes.
+                                            4. SIMAN se reserva el derecho de
+                                            dar de baja y expulsar
+                                            automáticamente a cualquier
+                                            participante que estime debido a un
+                                            mal uso o abuso del Concurso, con la
+                                            correspondiente cancelación de su
+                                            participación. Se entiende como mal
+                                            uso, con carácter enunciativo y no
+                                            excluyente.
                                         </p>
-                                        <h4
-                                            class="text-start text-justify ps-3 mt-3"
-                                        >
-                                            5. Formulario de inscripción.
-                                        </h4>
                                         <p class="text-start text-justify">
-                                            Al completar los datos y enviar el
+                                            5. Los participantes sólo podrán
+                                            preinscribirse para una sola Carrera
+                                            de Gateo del total de 3 carreras que
+                                            se realizara el sabado 11 de junio
+                                            en 3 horarios 10am 11 am 12 pm . Se
+                                            convocará a los padres de cada bebé
+                                            15 minutos antes de la competición
+                                            en la pista de gateo para proceder a
+                                            la entrega de numeros, organizar a
+                                            los bebés competidores y completar
+                                            sus datos, asignando un carril para
+                                            cada uno. Importante: Si los
+                                            participantes preinscritos no se
+                                            presentan en el periodo de tiempo
+                                            mencionado anteriormente, perderán
+                                            su derecho a participar y se
+                                            procederá a incorporar a otro
+                                            concursante que se encuentre en
+                                            lista de espera.
+                                        </p>
+                                        <p class="text-start text-justify">
+                                            6. Formulario de inscripción. Al
+                                            completar los datos y enviar el
                                             formulario de inscripción, Ud esta
                                             aceptando los terminos y condiciones
                                             descritos en este documento.
+                                        </p>
+                                        <p class="text-start text-justify">
+                                            7. Al Inscribirse acepta que el
+                                            tutor y participante salgan en
+                                            fotografías o vídeos en redes
+                                            sociales y otros canales de
+                                            comunicación de Siman.
                                         </p>
                                     </div>
                                     <div class="col-lg-8 mx-auto">
@@ -392,7 +363,7 @@
     </div>
     <div class="container" v-else>
         <div class="finish">
-            <img src="asset/image/finish.png" alt="">
+            <img src="asset/image/finish.png" alt="" />
         </div>
     </div>
 </template>
@@ -464,7 +435,10 @@ export default {
                         showConfirmButton: false,
                         timer: 2500,
                     });
-                    setTimeout(window.location.reload.bind(window.location), 3000);
+                    setTimeout(
+                        window.location.reload.bind(window.location),
+                        3000
+                    );
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -560,21 +534,21 @@ export default {
         async cantidadHorario(grupo) {
             let ret;
             await axios
-                .get("/gallery/cantidad-grupo?grupo="+grupo)
-                .then((response)=>{
+                .get("/gallery/cantidad-grupo?grupo=" + grupo)
+                .then((response) => {
                     ret = response.data;
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
                 });
             return ret;
         },
 
-        obtenerHorarios: async function() {
+        obtenerHorarios: async function () {
             this.grupos.length = 0;
-            for(var i = 0; i < 3; i++){
-                let horario = await this.cantidadHorario(i+1);
-                this.grupos.push(horario<=20);
+            for (var i = 0; i < 3; i++) {
+                let horario = await this.cantidadHorario(i + 1);
+                this.grupos.push(horario <= 20);
             }
         },
         validarCorreo() {
@@ -640,7 +614,9 @@ export default {
 
             /*** validar cantidad de por horario */
             if (this.validateHorario == 1) {
-                this.errorMostrarMsjgaleria.push("El Horario seleccionado esta lleno!.");
+                this.errorMostrarMsjgaleria.push(
+                    "El Horario seleccionado esta lleno!."
+                );
             }
 
             /*** validar escritura de email */

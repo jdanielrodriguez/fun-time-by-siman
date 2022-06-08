@@ -13622,6 +13622,17 @@ section {
     width: 100%;
     height: 165px;
 }
+.blocker{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+.blocker>img{
+    margin: auto;
+    width: 30%;
+    height: auto;
+}
 @media (max-width: 400px) {
     #inicio, .fondo1 {
         height: auto;
@@ -13712,5 +13723,8 @@ section {
 
     .finish>img{
         height: 100px;
+    }
+    .blocker>img{
+        width: 50%;
     }
 }
